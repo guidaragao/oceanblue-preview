@@ -1,0 +1,519 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apresentação Ocean Blue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0b1b2e; --hull:#0a3a63; --steel:#1a7ba8;
+  --surface:#5c9fd0; --ice:#8fc9de; --fog:#f2f5f7; --graphite:#46545f;
+  --brass:#c29a5b; --brass-deep:#8a6231;
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#05101c;overflow:hidden}
+body{font-family:var(--body);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+
+.palco{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:22px}
+.slide{
+  width:min(100%,1620px);aspect-ratio:16/9;max-height:calc(100vh - 44px);
+  background:var(--fog);color:var(--navy);position:relative;overflow:hidden;
+  box-shadow:0 30px 90px rgba(0,0,0,.55);display:none;container-type:inline-size;
+}
+.slide.on{display:block}
+.slide .pad{position:absolute;inset:0;padding:5.4cqw 6.4cqw;display:flex;flex-direction:column;justify-content:center}
+.escuro{background:var(--navy);color:#fff}
+.escuro h1,.escuro h2,.escuro h3{color:#fff}
+
+h1{font-family:var(--display);font-weight:800;font-size:6cqw;line-height:.96;letter-spacing:-.03em;margin:0}
+h2{font-family:var(--display);font-weight:800;font-size:4.1cqw;line-height:1.02;letter-spacing:-.03em;margin:0}
+h3{font-family:var(--display);font-weight:700;font-size:1.75cqw;line-height:1.12;letter-spacing:-.02em;margin:0}
+p{margin:0;font-size:1.45cqw;line-height:1.6}
+.grande{font-size:1.85cqw;line-height:1.55}
+
+.olho{font-family:var(--mono);font-size:1cqw;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--brass-deep);display:flex;align-items:center;gap:1cqw;margin:0 0 2.2cqw}
+.olho::before{content:"";width:2.8cqw;height:2px;background:var(--brass-deep)}
+.escuro .olho{color:var(--brass)}
+.escuro .olho::before{background:var(--brass)}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:3.6cqw;align-items:center}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2cqw}
+.cols4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.7cqw}
+
+.bloco{border-top:2px solid var(--brass);padding-top:1.4cqw}
+.bloco .n{font-family:var(--mono);font-size:.9cqw;letter-spacing:.2em;color:var(--brass-deep);display:block;margin-bottom:.8cqw}
+.escuro .bloco .n{color:var(--brass)}
+.bloco h3{margin-bottom:.6cqw}
+.bloco p{font-size:1.2cqw;color:var(--graphite)}
+.escuro .bloco p{color:rgba(255,255,255,.74)}
+
+.capa{background:var(--navy) url('apres-assets/foto.jpg') center/cover;color:#fff;position:relative}
+.capa::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(95deg,rgba(11,27,46,.97) 0%,rgba(11,27,46,.88) 46%,rgba(11,27,46,.5) 100%)}
+.capa .pad{z-index:2}
+.capa img.marca{width:8.4cqw;margin-bottom:2.4cqw}
+.assina{position:absolute;left:6.4cqw;right:6.4cqw;bottom:4.4cqw;z-index:2;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:2cqw}
+.assina .dupla{display:flex;align-items:center;gap:1.6cqw}
+.assina .dupla img.ia{width:3.4cqw}
+.assina .dupla .risco{width:1px;height:3cqw;background:rgba(255,255,255,.25)}
+.assina .dupla img.vmg{width:7cqw;opacity:.92}
+.assina .data{font-family:var(--mono);font-size:.95cqw;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+.cita{font-family:var(--display);font-weight:700;font-size:3cqw;line-height:1.16;letter-spacing:-.02em}
+.cita em{font-style:normal;color:var(--brass)}
+.fonte{font-family:var(--mono);font-size:.98cqw;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--graphite);margin-top:1.8cqw}
+.escuro .fonte{color:rgba(255,255,255,.55)}
+
+/* paleta */
+.tiras{display:grid;grid-template-columns:repeat(7,1fr);gap:.5cqw;margin-top:2.2cqw}
+.tira{height:12.5cqw;display:flex;align-items:flex-end;padding:.9cqw}
+.tira span{font-family:var(--mono);font-size:.85cqw;letter-spacing:.08em}
+
+/* cartao no slide */
+.pc{aspect-ratio:85/55;position:relative;overflow:hidden;border-radius:.25cqw;
+  box-shadow:0 1.6cqw 3.4cqw rgba(0,0,0,.34)}
+.pc .anc{position:absolute;width:64%;right:-14%;top:50%;transform:translateY(-50%);
+  color:#fff;opacity:.055;pointer-events:none}
+.pc.claro .anc{color:var(--navy);opacity:.06}
+.pcf{background:var(--navy);color:#fff;display:flex;align-items:flex-end;padding:2.1cqw 2cqw}
+.pcf.claro{background:var(--fog);color:var(--navy)}
+.lk{position:relative;z-index:2}
+.lk .t{font-family:var(--mono);font-size:.62cqw;letter-spacing:.5em;color:var(--brass);
+  text-transform:uppercase;margin:0 0 .55cqw}
+.lk .n{font-family:var(--display);font-weight:700;font-size:1.72cqw;letter-spacing:-.015em;line-height:1}
+.lk .s{font-family:var(--mono);font-size:.58cqw;letter-spacing:.44em;
+  color:rgba(255,255,255,.62);text-transform:uppercase;margin:.62cqw 0 0}
+.pcf.claro .lk .s{color:rgba(70,84,95,.75)}
+.lk .fio{width:2.1cqw;height:1.5px;background:var(--brass);display:block;margin:1.1cqw 0 .85cqw}
+.lk .g{font-size:.66cqw;font-style:italic;color:rgba(255,255,255,.72)}
+.pcf.claro .lk .g{color:var(--graphite)}
+.pcv{background:var(--fog);color:var(--navy);display:flex;flex-direction:column;
+  justify-content:space-between;padding:2.1cqw 2cqw}
+.pcv .pe{font-family:var(--display);font-weight:700;font-size:1.32cqw;letter-spacing:-.02em;line-height:1;position:relative;z-index:2}
+.pcv .pa{font-family:var(--mono);font-size:.6cqw;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--brass-deep);margin-top:.6cqw;position:relative;z-index:2}
+.pcv .ct{font-family:var(--mono);font-size:.63cqw;line-height:2.1;color:var(--graphite);
+  margin-top:.85cqw;position:relative;z-index:2}
+.pcv .fio{width:2.1cqw;height:1.5px;background:var(--brass-deep);display:block;position:relative;z-index:2}
+
+/* timbrado */
+.a4{aspect-ratio:210/297;background:#fff;border:1px solid rgba(11,27,46,.14);
+  padding:1.7cqw 1.8cqw;display:flex;flex-direction:column;box-shadow:0 1.6cqw 3.4cqw rgba(11,27,46,.2)}
+.a4-t{display:flex;align-items:center;gap:.7cqw;padding-bottom:.9cqw;border-bottom:1.5px solid var(--navy)}
+.a4-t img{width:2.1cqw}
+.a4-t .n{font-family:var(--display);font-weight:700;font-size:.7cqw;line-height:1.1}
+.a4-t .n span{display:block;font-family:var(--mono);font-size:.4cqw;letter-spacing:.3em;color:var(--brass-deep);margin-top:.15cqw}
+.a4-b{flex:1;padding:1.2cqw 0}
+.a4-b i{display:block;height:.32cqw;background:var(--fog);border-radius:.15cqw;margin-bottom:.5cqw}
+.a4-f{border-top:1px solid rgba(11,27,46,.12);padding-top:.6cqw;font-family:var(--mono);
+  font-size:.4cqw;letter-spacing:.05em;color:var(--graphite);display:flex;justify-content:space-between}
+
+/* assinatura de email */
+.sg{background:#fff;border:1px solid rgba(11,27,46,.14);padding:1.5cqw;display:flex;gap:1.5cqw;align-items:center}
+.sg img{width:4.4cqw}
+.sg .r{width:1px;align-self:stretch;background:rgba(11,27,46,.14)}
+.sg .nm{font-family:var(--display);font-weight:700;font-size:1.28cqw}
+.sg .cg{font-family:var(--mono);font-size:.62cqw;letter-spacing:.3em;text-transform:uppercase;color:var(--brass-deep);margin:.3cqw 0 .7cqw}
+.sg .dd{font-family:var(--mono);font-size:.72cqw;line-height:1.9;color:var(--graphite)}
+
+.tela{border:1px solid rgba(11,27,46,.16);box-shadow:0 1.8cqw 4cqw rgba(11,27,46,.26)}
+.fone{width:15cqw;border-radius:2cqw;overflow:hidden;border:.35cqw solid #10131a;
+  box-shadow:0 1.8cqw 4cqw rgba(0,0,0,.4);background:#000}
+.fones{display:flex;gap:2.4cqw;justify-content:center;align-items:flex-start}
+
+ul.lista{list-style:none;margin:0;padding:0}
+ul.lista li{position:relative;padding-left:2cqw;margin-bottom:1.05cqw;font-size:1.32cqw;line-height:1.45}
+ul.lista li::before{content:"";position:absolute;left:0;top:.72cqw;width:1cqw;height:2px;background:var(--brass)}
+ul.lista li b{font-weight:600}
+ul.lista li span{display:block;font-size:1.08cqw;color:var(--graphite);margin-top:.18cqw}
+.escuro ul.lista li span{color:rgba(255,255,255,.66)}
+
+.link{display:inline-flex;align-items:center;gap:.8cqw;font-family:var(--mono);font-size:1.05cqw;
+  letter-spacing:.06em;color:var(--navy);background:var(--brass);padding:.9cqw 1.4cqw;
+  text-decoration:none;border-radius:.2cqw;font-weight:500;margin-top:1.8cqw}
+.link:hover{background:#fff}
+
+.hud{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;
+  font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.55);z-index:10;
+  background:rgba(6,17,30,.8);padding:7px 15px;border-radius:2px;backdrop-filter:blur(8px)}
+.hud button{background:none;border:1px solid rgba(255,255,255,.25);color:#fff;cursor:pointer;
+  font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:2px}
+.hud button:hover{border-color:var(--brass);color:var(--brass)}
+
+@media print{
+  @page{size:landscape;margin:0}
+  html,body{overflow:visible;background:#fff;height:auto}
+  .palco{position:static;display:block;padding:0}
+  .slide{display:block!important;max-height:none;width:100%;break-after:page;box-shadow:none}
+  .hud{display:none}
+}
+</style>
+
+<div class="palco">
+
+<!-- 01 -->
+<section class="slide on capa">
+  <div class="pad">
+    <img class="marca" src="apres-assets/logo.png" alt="">
+    <div class="olho">Identidade visual e site · Proposta de direção</div>
+    <h1>Service Ocean<br>Blue Diving</h1>
+    <p class="grande" style="margin-top:2cqw;max-width:42cqw;color:rgba(255,255,255,.82)">
+      O plano de trabalho, os protótipos, e o que eu preciso de você para entregar.
+    </p>
+  </div>
+  <div class="assina">
+    <div class="dupla">
+      <img class="ia" src="apres-assets/logo-ingrid.png" alt="Ingrid Aragão">
+      <span class="risco"></span>
+      <img class="vmg" src="apres-assets/logo-vmg.png" alt="Vander Media Group">
+    </div>
+    <span class="data">26 de agosto de 2026</span>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="slide">
+  <div class="pad">
+    <div class="olho">01 · O ponto de partida</div>
+    <h2>A empresa é nova.<br>As pessoas não são.</h2>
+    <p class="grande" style="margin-top:2.2cqw;max-width:58cqw;color:var(--graphite)">
+      Um armador não entrega um casco de milhões a uma empresa recém-aberta. Mas entrega,
+      sim, a uma equipe que já fazia exatamente esse serviço, junta, e que decidiu montar
+      operação própria.
+    </p>
+    <p class="grande" style="margin-top:1.4cqw;max-width:58cqw;color:var(--graphite)">
+      A marca não esconde que a empresa é nova. Ela põe
+      <strong style="color:var(--navy)">a experiência da equipe na frente do CNPJ</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="slide escuro">
+  <div class="pad">
+    <div class="olho">02 · A mensagem</div>
+    <p class="cita">Fouling não é sujeira.<br><em>É arrasto.</em></p>
+    <p class="grande" style="margin-top:2.2cqw;max-width:52cqw;color:rgba(255,255,255,.78)">
+      É a frase que abre o site. Transforma um serviço de limpeza em um problema de
+      eficiência operacional, que é a linguagem de quem assina o contrato.
+    </p>
+  </div>
+</section>
+
+<!-- 04 PLANO DE TRABALHO -->
+<section class="slide">
+  <div class="pad">
+    <div class="olho">03 · O plano de trabalho</div>
+    <h2>O logo fica. Vamos construir<br>tudo o que falta em volta dele.</h2>
+    <div class="cols4" style="margin-top:2.8cqw">
+      <div class="bloco">
+        <span class="n">01 · Marca</span>
+        <h3>Sistema visual</h3>
+        <p>Paleta definida com proporção de uso, tipografia com escala, regras de aplicação do logo e mini guia para a equipe usar sozinha.</p>
+      </div>
+      <div class="bloco">
+        <span class="n">02 · Papelaria</span>
+        <h3>Aplicações</h3>
+        <p>Cartão de visita em duas versões, papel timbrado, assinatura de email, capa de apresentação e modelos de post.</p>
+      </div>
+      <div class="bloco">
+        <span class="n">03 · Site</span>
+        <h3>Sete páginas bilíngues</h3>
+        <p>Construído sob medida, em português e inglês, rápido no celular e pronto para o decisor internacional.</p>
+      </div>
+      <div class="bloco">
+        <span class="n">04 · Operação</span>
+        <h3>O que roda por trás</h3>
+        <p>Formulário que entrega o lead, Pixel, análise de tráfego, avaliações do Google e SEO nos dois idiomas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CORES -->
+<section class="slide">
+  <div class="pad">
+    <div class="olho">04 · Cores</div>
+    <h2>A paleta saiu do seu logo.<br>O acento saiu da hélice.</h2>
+    <div class="tiras">
+      <div class="tira" style="background:#0b1b2e;color:#fff"><span>#0B1B2E</span></div>
+      <div class="tira" style="background:#0a3a63;color:#fff"><span>#0A3A63</span></div>
+      <div class="tira" style="background:#1a7ba8;color:#fff"><span>#1A7BA8</span></div>
+      <div class="tira" style="background:#5c9fd0;color:#0b1b2e"><span>#5C9FD0</span></div>
+      <div class="tira" style="background:#8fc9de;color:#0b1b2e"><span>#8FC9DE</span></div>
+      <div class="tira" style="background:#f2f5f7;color:#0b1b2e;border:1px solid rgba(11,27,46,.12)"><span>#F2F5F7</span></div>
+      <div class="tira" style="background:#c29a5b;color:#0b1b2e"><span>#C29A5B</span></div>
+    </div>
+    <p style="margin-top:1.8cqw;color:var(--graphite);max-width:60cqw">
+      Os azuis vieram do próprio logo. O sétimo é a novidade que eu proponho: um
+      <strong style="color:var(--brass-deep)">latão</strong> amostrado do bronze da hélice.
+      É a única cor quente do universo de vocês. Contra o navy ela dá o ar caro que azul com
+      azul nunca dá, e não briga com nada.
+    </p>
+  </div>
+</section>
+
+<!-- 06 TIPOGRAFIA -->
+<section class="slide escuro">
+  <div class="pad">
+    <div class="olho">05 · Tipografia</div>
+    <div class="cols3" style="align-items:start">
+      <div class="bloco">
+        <span class="n">Títulos</span>
+        <p style="font-family:var(--display);font-weight:800;font-size:3.1cqw;letter-spacing:-.03em;line-height:1;color:#fff">Archivo</p>
+        <p style="margin-top:.9cqw">Chega perto do peso do letreiro do seu logo, então título e marca conversam.</p>
+      </div>
+      <div class="bloco">
+        <span class="n">Texto</span>
+        <p style="font-family:var(--body);font-weight:500;font-size:3.1cqw;line-height:1;color:#fff">IBM Plex</p>
+        <p style="margin-top:.9cqw">Desenhada para documentação técnica. Legível em corpo pequeno, que é o que relatório exige.</p>
+      </div>
+      <div class="bloco">
+        <span class="n">Dado</span>
+        <p style="font-family:var(--mono);font-size:2.4cqw;line-height:1.2;color:#fff">Plex Mono</p>
+        <p style="margin-top:.9cqw">Só em caixa alta e espaçada. Dá o ar de instrumento de medição.</p>
+      </div>
+    </div>
+    <p class="fonte">As três são gratuitas. A equipe inteira instala sem custo de licença.</p>
+  </div>
+</section>
+
+<!-- 07 CARTAO -->
+<section class="slide">
+  <div class="pad">
+    <div class="olho">06 · Cartão de visita</div>
+    <div class="cols" style="gap:3cqw">
+      <div>
+        <h2>Discreto por fora,<br>caro no detalhe.</h2>
+        <p style="margin-top:1.6cqw;color:var(--graphite);max-width:30cqw">
+          Nada centralizado, nada preenchendo o meio. Um bloco tipográfico num canto só,
+          margem larga, e a âncora atrás em <strong>relevo cego</strong>: você sente com o
+          dedo antes de enxergar. O fio e as letras miúdas em latão viram
+          <strong>hot stamping metálico</strong> na gráfica.
+        </p>
+        <p class="fonte">Duas versões: escura para a direção, clara para a equipe técnica</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw">
+        <div class="pc pcf">
+          <svg class="anc" viewBox="0 0 100 140" fill="none"><circle cx="50" cy="15" r="9" stroke="currentColor" stroke-width="5"/><path d="M50 24V119" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M24 39H76" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M12 84C12 108 30 122 50 122C70 122 88 108 88 84" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M12 86L2 68L23 75Z" fill="currentColor"/><path d="M88 86L98 68L77 75Z" fill="currentColor"/></svg>
+          <div class="lk">
+            <p class="t">Service</p>
+            <p class="n">OCEAN BLUE</p>
+            <p class="s">Diving</p>
+            <span class="fio"></span>
+            <p class="g">Underwater solutions for heavy operations</p>
+          </div>
+        </div>
+        <div class="pc pcv claro">
+          <svg class="anc" viewBox="0 0 100 140" fill="none"><circle cx="50" cy="15" r="9" stroke="currentColor" stroke-width="5"/><path d="M50 24V119" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M24 39H76" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M12 84C12 108 30 122 50 122C70 122 88 108 88 84" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M12 86L2 68L23 75Z" fill="currentColor"/><path d="M88 86L98 68L77 75Z" fill="currentColor"/></svg>
+          <div style="position:relative;z-index:2">
+            <p class="pe">Mariana Rossiter</p>
+            <p class="pa">Manager</p>
+          </div>
+          <div>
+            <span class="fio"></span>
+            <p class="ct">+55 71 99101-5763<br>commercial@serviceocean.com.br<br>serviceocean.com.br</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 PAPELARIA -->
+<section class="slide">
+  <div class="pad">
+    <div class="olho">07 · Papelaria</div>
+    <div class="cols" style="gap:3cqw;align-items:center">
+      <div style="display:grid;grid-template-columns:.62fr 1fr;gap:2cqw;align-items:center">
+        <div class="a4">
+          <div class="a4-t">
+            <img src="apres-assets/logo.png" alt="">
+            <div class="n">SERVICE OCEAN BLUE<span>DIVING</span></div>
+          </div>
+          <div class="a4-b"><i style="width:88%"></i><i></i><i style="width:64%"></i><i style="width:0;margin-bottom:1cqw"></i><i></i><i style="width:82%"></i><i style="width:55%"></i></div>
+          <div class="a4-f"><span>commercial@serviceocean.com.br</span><span>+55 71 99101-5763</span></div>
+        </div>
+        <div class="sg">
+          <img src="apres-assets/logo.png" alt="">
+          <span class="r"></span>
+          <div>
+            <div class="nm">Mariana Rossiter</div>
+            <div class="cg">Manager</div>
+            <div class="dd">+55 71 99101-5763<br>commercial@serviceocean.com.br<br>serviceocean.com.br</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Timbrado e<br>assinatura de email.</h2>
+        <p style="margin-top:1.6cqw;color:var(--graphite);max-width:30cqw">
+          O timbrado nasce da mesma régua: fio grosso separando o cabeçalho, margem generosa,
+          e o rodapé em uma linha só. É o papel que sai numa proposta técnica sem parecer
+          documento de repartição.
+        </p>
+        <p style="margin-top:1.2cqw;color:var(--graphite);max-width:30cqw">
+          Na assinatura de email eu tirei os quatro ícones coloridos de rede, que brigavam
+          com o azul. A hierarquia passa a ser <strong>marca, pessoa, contato</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 O SITE -->
+<section class="slide escuro">
+  <div class="pad" style="padding:4.4cqw 6.4cqw">
+    <div class="olho">08 · O site</div>
+    <div class="cols" style="align-items:center;gap:3cqw">
+      <div>
+        <h2>Sete páginas,<br>bilíngue de verdade.</h2>
+        <p style="margin-top:1.4cqw;font-size:1.3cqw;color:rgba(255,255,255,.76);max-width:30cqw">
+          Início, Serviços, A empresa, Segurança, Cobertura, Operações e Contato. Abre em
+          inglês para o decisor internacional e em português para quem está no Brasil.
+        </p>
+        <a class="link" href="https://guidaragao.github.io/oceanblue-preview/" target="_blank">Abrir o site ao vivo</a>
+        <p class="fonte" style="margin-top:1.2cqw">guidaragao.github.io/oceanblue-preview</p>
+      </div>
+      <img class="tela" src="apres-assets/site-home.jpg" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- 10 CELULAR -->
+<section class="slide">
+  <div class="pad" style="padding:4cqw 6.4cqw">
+    <div class="olho">09 · No celular</div>
+    <div class="cols" style="gap:3cqw;align-items:center">
+      <div>
+        <h2>A maioria vai abrir<br>do celular, no porto.</h2>
+        <p style="margin-top:1.4cqw;color:var(--graphite);max-width:30cqw">
+          Superintendente de frota consulta fornecedor do celular, muitas vezes com internet
+          ruim. O site foi construído primeiro para essa tela: carrega leve, o menu vira uma
+          coluna, e o botão de contato fica sempre a um toque.
+        </p>
+        <p class="fonte">Capturas do site já publicado, não é maquete</p>
+      </div>
+      <div class="fones">
+        <img class="fone" src="apres-assets/mobile-1.jpg" alt="">
+        <img class="fone" src="apres-assets/mobile-2.jpg" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 BACKEND -->
+<section class="slide escuro">
+  <div class="pad">
+    <div class="olho">10 · O que roda por trás</div>
+    <h2>O site não é só bonito.<br>Ele trabalha.</h2>
+    <div class="cols4" style="margin-top:2.6cqw">
+      <div class="bloco">
+        <span class="n">Lead</span>
+        <h3>O orçamento chega em você</h3>
+        <p>O formulário dispara email e mensagem no WhatsApp comercial na hora. Você decide se quer os dois ou só um.</p>
+      </div>
+      <div class="bloco">
+        <span class="n">Medição</span>
+        <h3>Pixel e análise de tráfego</h3>
+        <p>Meta Pixel e Google Analytics instalados desde o primeiro dia. Sem isso, anúncio futuro começa cego.</p>
+      </div>
+      <div class="bloco">
+        <span class="n">Reputação</span>
+        <h3>Google e avaliações</h3>
+        <p>Perfil da empresa no Google configurado, e as avaliações aparecendo no site. É o que um cliente novo procura antes de ligar.</p>
+      </div>
+      <div class="bloco">
+        <span class="n">Busca</span>
+        <h3>SEO nos dois idiomas</h3>
+        <p>Títulos, descrição e dados estruturados em português e inglês, para aparecer nas duas buscas.</p>
+      </div>
+    </div>
+    <p class="fonte">Tudo isso está incluído. Não é serviço à parte.</p>
+  </div>
+</section>
+
+<!-- 12 O QUE PRECISO -->
+<section class="slide">
+  <div class="pad">
+    <div class="olho">11 · Próximos passos</div>
+    <div class="cols" style="gap:3.4cqw;align-items:start">
+      <div>
+        <h2 style="margin-bottom:1.8cqw">O que eu preciso<br>de você.</h2>
+        <ul class="lista">
+          <li><b>Ler a proposta que eu mandei e confirmar o escopo.</b><span>Principalmente quantas páginas entram agora.</span></li>
+          <li><b>Dois ou três sites que você acha bonitos.</b><span>Não precisa ser do setor. Serve para eu calibrar antes de finalizar.</span></li>
+          <li><b>Anos de mergulho comercial de cada um da equipe.</b><span>É o argumento mais forte que vocês têm.</span></li>
+          <li><b>Portos atendidos e mobilização em horas.</b><span>Rápido não convence. Quarenta e oito horas convence.</span></li>
+        </ul>
+      </div>
+      <div style="padding-top:6.4cqw">
+        <ul class="lista">
+          <li><b>Normas e certificações, pelo nome e sigla.</b><span>E quais sociedades classificadoras aceitam o relatório de vocês.</span></li>
+          <li><b>Fotos reais da operação e da equipe.</b><span>As imagens de hoje são de referência e precisam ser trocadas.</span></li>
+          <li><b>O conteúdo de cada página.</b><span>Vou te mandar um formulário curto por área, para você preencher sem travar.</span></li>
+          <li><b>Três decisões rápidas.</b><span>Domínio, hospedagem, e por onde o orçamento chega: email, WhatsApp, ou os dois.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 FECHAMENTO -->
+<section class="slide escuro" style="background:var(--hull)">
+  <div class="pad">
+    <div class="olho">Para fechar</div>
+    <h2>Escolhe a versão do cartão hoje,<br>e eu sigo para a arte final.</h2>
+    <p class="grande" style="margin-top:2.2cqw;max-width:50cqw;color:rgba(255,255,255,.84)">
+      Com o material dessa lista em mãos, o site sai do rascunho e a papelaria vai para a
+      gráfica.
+    </p>
+    <div class="assina" style="left:6.4cqw;right:6.4cqw">
+      <div class="dupla">
+        <img class="ia" src="apres-assets/logo-ingrid.png" alt="">
+        <span class="risco"></span>
+        <img class="vmg" src="apres-assets/logo-vmg.png" alt="">
+      </div>
+      <span class="data">ingrid@vadmediagroup.com · (71) 99347-7474</span>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="hud">
+  <button id="ant">◀</button><span id="cont">1 / 13</span><button id="pro">▶</button>
+</div>
+
+<script>
+(function(){
+  var slides = [].slice.call(document.querySelectorAll('.slide'));
+  var i = 0, cont = document.getElementById('cont');
+  function ir(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(s, k){ s.classList.toggle('on', k === i); });
+    cont.textContent = (i + 1) + ' / ' + slides.length;
+  }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); ir(i+1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); ir(i-1); }
+    if (e.key === 'Home') ir(0);
+    if (e.key === 'End') ir(slides.length-1);
+  });
+  document.getElementById('pro').onclick = function(){ ir(i+1); };
+  document.getElementById('ant').onclick = function(){ ir(i-1); };
+  document.querySelector('.palco').addEventListener('click', function(e){
+    if (e.target.closest('.hud') || e.target.closest('a')) return;
+    ir(i + (e.clientX > window.innerWidth/2 ? 1 : -1));
+  });
+  ir(0);
+})();
+</script>

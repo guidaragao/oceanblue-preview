@@ -1,0 +1,632 @@
+<meta charset="utf-8">
+<title>Identidade Ocean Blue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0b1b2e;
+  --hull:#0a3a63;
+  --steel:#1a7ba8;
+  --surface:#5c9fd0;
+  --ice:#8fc9de;
+  --fog:#f2f5f7;
+  --brass:#c29a5b;
+  --brass-deep:#8a6231;
+  --graphite:#46545f;
+  --line:rgba(11,27,46,.13);
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fog);color:var(--navy);font-family:var(--body);
+  font-size:17px;line-height:1.65;padding:0 28px 100px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto}
+img{max-width:100%;display:block}
+
+h1,h2,h3,h4{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.06}
+h1{font-size:clamp(38px,5.6vw,66px);font-weight:800}
+h2{font-size:clamp(26px,3.4vw,38px);font-weight:700}
+h3{font-size:20px;font-weight:700}
+h4{font-size:16px;font-weight:600}
+p{margin:0 0 16px}
+
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel);display:flex;align-items:center;gap:12px;margin:0 0 20px;font-weight:500}
+.kicker::before{content:"";width:30px;height:2px;background:var(--steel);flex:none}
+
+.cover{padding:64px 0 48px;border-bottom:1px solid var(--line)}
+.cover-in{display:flex;gap:34px;align-items:center;flex-wrap:wrap}
+.cover img{width:132px}
+.lede{font-size:19px;line-height:1.6;color:var(--graphite);max-width:64ch;margin:22px 0 0}
+
+section{padding:66px 0 0}
+.num{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--steel);display:block;margin:0 0 12px}
+.sechead{margin:0 0 30px;max-width:70ch}
+.sechead p{margin:14px 0 0;color:var(--graphite)}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:30px 32px;margin:0 0 16px}
+.card h3{margin:0 0 12px}
+.card p:last-child{margin-bottom:0}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--steel);display:block;margin:0 0 14px}
+
+/* ---------- paleta ---------- */
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.sw{background:#fff;padding:0}
+.sw .chip{height:118px}
+.sw .meta{padding:18px 20px}
+.sw .nome{font-family:var(--display);font-weight:700;font-size:17px;margin:0 0 8px}
+.sw dl{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.9;color:var(--graphite)}
+.sw dl div{display:flex;justify-content:space-between;gap:12px}
+.sw dt{color:rgba(70,84,95,.7)}
+.sw .uso{font-size:14.5px;color:var(--graphite);margin:12px 0 0;line-height:1.5;font-family:var(--body)}
+
+.ratio{display:flex;height:56px;border-radius:4px;overflow:hidden;margin:18px 0 0;border:1px solid var(--line)}
+.ratio i{display:block}
+
+/* ---------- tipografia ---------- */
+.typeblock{background:#fff;border:1px solid var(--line);border-radius:4px;padding:30px 32px;margin:0 0 16px}
+.typeblock .sample{margin:14px 0 0;color:var(--navy)}
+.scale{display:grid;gap:0}
+.scale div{display:grid;grid-template-columns:170px 1fr;gap:20px;align-items:baseline;
+  padding:15px 0;border-bottom:1px solid var(--line)}
+.scale div:last-child{border-bottom:0}
+.scale .spec{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite)}
+
+/* ---------- aplicacoes ---------- */
+.appgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.mock{background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px;overflow:hidden}
+.mock .rot{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--graphite);margin:0 0 16px;display:flex;justify-content:space-between;gap:10px}
+
+/* ===========================================================
+   PAPELARIA. Referencia: cartao de consultoria maritima europeia,
+   nao cartao de servico. O que faz parecer caro:
+   margem generosa, um bloco tipografico apertado num canto so,
+   fio de latao fino, e a ancora em relevo cego (navy sobre navy).
+   Nada centralizado, nada preenchendo o meio.
+   =========================================================== */
+.pc{
+  aspect-ratio:85/55;position:relative;overflow:hidden;border-radius:3px;
+  box-shadow:0 22px 50px rgba(11,27,46,.26);
+}
+.pc .ancora{
+  position:absolute;pointer-events:none;
+  width:64%;right:-14%;top:50%;transform:translateY(-50%);
+  color:#fff;opacity:.055;
+}
+.pc.claro .ancora{color:var(--navy);opacity:.06}
+.fio-latao{width:34px;height:1.5px;background:var(--brass);display:block}
+.pc.claro .fio-latao{background:var(--brass-deep)}
+
+/* frente */
+.pc-frente{background:var(--navy);color:#fff;display:flex;align-items:flex-end;padding:34px 32px}
+.pc-frente .lockup{position:relative;z-index:2}
+.pc-frente .lk-top{
+  font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.52em;
+  color:var(--brass);text-transform:uppercase;margin:0 0 9px;
+}
+.pc-frente .lk-nome{
+  font-family:var(--display);font-weight:700;font-size:27px;letter-spacing:-.015em;
+  line-height:1;color:#fff;
+}
+.pc-frente .lk-sub{
+  font-family:var(--mono);font-size:9px;letter-spacing:.46em;
+  color:rgba(255,255,255,.62);text-transform:uppercase;margin:10px 0 0;
+}
+.pc-frente .lk-linha{margin:18px 0 14px}
+.pc-frente .lk-tag{
+  font-family:var(--body);font-size:10.5px;font-style:italic;
+  color:rgba(255,255,255,.72);letter-spacing:.02em;
+}
+
+/* verso */
+.pc-verso{background:var(--fog);color:var(--navy);display:flex;flex-direction:column;
+  justify-content:space-between;padding:34px 32px}
+.pc-verso .topo{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.pc-verso .pessoa{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;line-height:1}
+.pc-verso .papel{font-family:var(--mono);font-size:9px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--brass-deep);margin-top:9px}
+.pc-verso img.selo{width:40px;opacity:.95;flex:none}
+.pc-verso .base{position:relative;z-index:2}
+.pc-verso .contatos{
+  font-family:var(--mono);font-size:10px;line-height:2.1;color:var(--graphite);
+  letter-spacing:.02em;margin-top:14px;
+}
+.pc-verso .contatos b{color:var(--navy);font-weight:400}
+
+/* variante clara da frente */
+.pc-frente.claro{background:var(--fog);color:var(--navy)}
+.pc-frente.claro .lk-nome{color:var(--navy)}
+.pc-frente.claro .lk-top{color:var(--brass-deep)}
+.pc-frente.claro .lk-sub{color:rgba(70,84,95,.75)}
+.pc-frente.claro .lk-tag{color:var(--graphite)}
+
+.par{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.dir{margin:0 0 30px}
+.dir-cab{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:0 0 14px;border-bottom:1px solid var(--line);margin:0 0 22px;flex-wrap:wrap}
+.dir-cab h3{margin:0}
+.dir-cab .qual{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--brass-deep)}
+.dir-nota{color:var(--graphite);font-size:15.5px;margin:18px 0 0;max-width:74ch}
+
+/* papel timbrado A4 */
+.a4{aspect-ratio:210/297;background:#fff;border:1px solid var(--line);border-radius:3px;
+  padding:26px 28px;display:flex;flex-direction:column;box-shadow:0 14px 34px rgba(11,27,46,.14);font-size:9px}
+.a4-top{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:2px solid var(--navy)}
+.a4-top img{width:38px}
+.a4-top .n{font-family:var(--display);font-weight:700;font-size:11px;line-height:1.15}
+.a4-top .n span{display:block;font-family:var(--mono);font-size:6.5px;letter-spacing:.18em;color:var(--steel);margin-top:2px}
+.a4-body{flex:1;padding:18px 0;color:var(--graphite);line-height:1.9}
+.a4-body .l{height:5px;background:var(--fog);border-radius:2px;margin-bottom:8px}
+.a4-body .l.s{width:62%}
+.a4-body .l.m{width:86%}
+.a4-foot{border-top:1px solid var(--line);padding-top:10px;font-family:var(--mono);
+  font-size:6.5px;letter-spacing:.06em;color:var(--graphite);display:flex;justify-content:space-between;gap:8px}
+
+/* assinatura de email */
+.sig{background:#fff;border:1px solid var(--line);border-radius:3px;padding:20px;display:flex;gap:20px;align-items:center}
+.sig img{width:86px}
+.sig .divider{width:1px;align-self:stretch;background:var(--line)}
+.sig .nome{font-family:var(--display);font-weight:700;font-size:19px}
+.sig .cargo{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin:3px 0 10px}
+.sig .dados{font-family:var(--mono);font-size:12px;line-height:1.85;color:var(--graphite)}
+
+/* capa de apresentacao 16:9 */
+.slide{aspect-ratio:16/9;background:var(--navy);border-radius:3px;padding:30px;color:#fff;
+  display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;
+  box-shadow:0 14px 34px rgba(11,27,46,.2)}
+.slide::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(58% 70% at 80% 18%,rgba(26,123,168,.42),transparent 68%)}
+.slide > *{position:relative;z-index:1}
+.slide img{width:44px}
+.slide h4{font-size:23px;font-weight:800;max-width:16ch;line-height:1.06}
+.slide .sub{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ice);margin-top:8px}
+
+/* post 1:1 */
+.post{aspect-ratio:1;background:var(--hull);border-radius:3px;padding:26px;color:#fff;
+  display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;
+  box-shadow:0 14px 34px rgba(11,27,46,.2)}
+.post::after{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 2px,transparent 2px 11px)}
+.post > *{position:relative;z-index:1}
+.post img{width:40px}
+.post h4{font-size:24px;font-weight:800;line-height:1.06;max-width:13ch}
+.post .fio{width:38px;height:3px;background:var(--ice);margin-bottom:12px}
+.post .rodape{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+
+ul.plain{list-style:none;margin:12px 0 0;padding:0}
+ul.plain li{position:relative;padding:0 0 0 22px;margin:0 0 10px;line-height:1.55}
+ul.plain li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:2px;background:var(--steel)}
+ul.no li::before{background:#b03a30}
+
+.dois{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.nota{border-left:2px solid var(--steel);padding:2px 0 2px 20px;margin:22px 0 0;max-width:70ch}
+.nota .selo{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--steel);display:block;margin:0 0 7px}
+.nota p{margin:0;color:var(--graphite);font-size:16px}
+
+footer{margin:76px 0 0;padding:34px 0 0;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:12.5px;color:var(--graphite)}
+
+@media (max-width:860px){
+  .swatches{grid-template-columns:1fr 1fr}
+  .appgrid,.dois{grid-template-columns:1fr}
+  .scale div{grid-template-columns:1fr;gap:4px}
+}
+@media (max-width:560px){
+  body{font-size:16.5px;padding:0 18px 70px}
+  .swatches{grid-template-columns:1fr}
+  .sig{flex-direction:column;align-items:flex-start;gap:14px}
+  .sig .divider{display:none}
+}
+@media print{
+  @page{margin:12mm}
+  body{background:#fff;font-size:12.5pt;padding:0}
+  section{break-inside:avoid-page;padding-top:26px}
+  .card,.mock,.typeblock{break-inside:avoid-page}
+}
+</style>
+
+<div class="wrap">
+
+<header class="cover">
+  <div class="kicker">Sistema de identidade visual · rascunho 01 · 25 ago 2026</div>
+  <div class="cover-in">
+    <img src="material-da-mari/logo.png" alt="Service Ocean Blue Diving">
+    <div>
+      <h1>Service Ocean<br>Blue Diving</h1>
+      <p class="lede">O logo fica como está. O que estava faltando é tudo em volta dele: <strong>cor definida, tipografia, e a marca aplicada</strong> em cada lugar onde a empresa aparece. É isso que transforma um desenho bonito em uma marca que se reconhece de longe.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="sechead">
+    <span class="num">01</span>
+    <h2>Cores</h2>
+    <p>Não inventei paleta. Amostrei as cores do próprio logo, contei quanto cada uma ocupa da arte e transformei isso em sistema. Por isso qualquer peça nova já nasce parecendo da mesma família.</p>
+  </div>
+
+  <div class="swatches">
+    <div class="sw">
+      <div class="chip" style="background:#0b1b2e"></div>
+      <div class="meta">
+        <p class="nome">Deep Navy</p>
+        <dl>
+          <div><dt>HEX</dt><dd>#0B1B2E</dd></div>
+          <div><dt>RGB</dt><dd>11 27 46</dd></div>
+          <div><dt>CMYK</dt><dd>76 41 0 82</dd></div>
+        </dl>
+        <p class="uso">A cor principal. Fundo de tudo que é institucional, e o texto forte no claro. É 42% do logo.</p>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#0a3a63"></div>
+      <div class="meta">
+        <p class="nome">Hull Navy</p>
+        <dl>
+          <div><dt>HEX</dt><dd>#0A3A63</dd></div>
+          <div><dt>RGB</dt><dd>10 58 99</dd></div>
+          <div><dt>CMYK</dt><dd>90 41 0 61</dd></div>
+        </dl>
+        <p class="uso">O segundo plano. Separa blocos sem sair do azul, e é o fundo dos posts.</p>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#1a7ba8"></div>
+      <div class="meta">
+        <p class="nome">Steel Blue</p>
+        <dl>
+          <div><dt>HEX</dt><dd>#1A7BA8</dd></div>
+          <div><dt>RGB</dt><dd>26 123 168</dd></div>
+          <div><dt>CMYK</dt><dd>85 27 0 34</dd></div>
+        </dl>
+        <p class="uso">O acento. Botão, link, número em destaque, fio de separação. Usar com parcimônia.</p>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#5c9fd0"></div>
+      <div class="meta">
+        <p class="nome">Surface Blue</p>
+        <dl>
+          <div><dt>HEX</dt><dd>#5C9FD0</dd></div>
+          <div><dt>RGB</dt><dd>92 159 208</dd></div>
+          <div><dt>CMYK</dt><dd>56 24 0 18</dd></div>
+        </dl>
+        <p class="uso">Apoio em gráfico, ícone e estado de passagem do mouse.</p>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#8fc9de"></div>
+      <div class="meta">
+        <p class="nome">Ice</p>
+        <dl>
+          <div><dt>HEX</dt><dd>#8FC9DE</dd></div>
+          <div><dt>RGB</dt><dd>143 201 222</dd></div>
+          <div><dt>CMYK</dt><dd>36 9 0 13</dd></div>
+        </dl>
+        <p class="uso">O acento em fundo escuro, onde o Steel Blue não teria contraste suficiente.</p>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#f2f5f7;border-bottom:1px solid rgba(11,27,46,.13)"></div>
+      <div class="meta">
+        <p class="nome">Fog</p>
+        <dl>
+          <div><dt>HEX</dt><dd>#F2F5F7</dd></div>
+          <div><dt>RGB</dt><dd>242 245 247</dd></div>
+          <div><dt>CMYK</dt><dd>2 1 0 3</dd></div>
+        </dl>
+        <p class="uso">O branco da marca. Fundo claro, papel, respiro. Nunca o branco puro em área grande.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ratio">
+    <i style="background:#0b1b2e;width:55%"></i>
+    <i style="background:#f2f5f7;width:22%"></i>
+    <i style="background:#0a3a63;width:11%"></i>
+    <i style="background:#1a7ba8;width:6%"></i>
+    <i style="background:#5c9fd0;width:3.5%"></i>
+    <i style="background:#8fc9de;width:2.5%"></i>
+  </div>
+  <div class="nota">
+    <span class="selo">Proporção de uso</span>
+    <p>A barra acima é a receita. Muito navy, bastante respiro claro, e o azul de acento aparecendo pouco. Acento demais tira o ar de premium que ela pediu e deixa a peça com cara de promoção.</p>
+  </div>
+  <div class="nota">
+    <span class="selo">Antes de imprimir</span>
+    <p>Os valores CMYK são conversão matemática do RGB. Papel e tinta mudam o resultado, então peça uma prova na gráfica antes de rodar cartão e timbrado em quantidade.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sechead">
+    <span class="num">02</span>
+    <h2>Tipografia</h2>
+    <p>Três fontes com funções separadas, todas gratuitas e disponíveis em qualquer computador da equipe. A lógica veio do próprio logo: um bloco pesado e largo para o nome, e um traço fino e espaçado para o resto.</p>
+  </div>
+
+  <div class="typeblock">
+    <span class="tag">Títulos · Archivo, peso 700 e 800</span>
+    <h3 style="font-size:clamp(30px,4.4vw,52px);font-weight:800;letter-spacing:-.03em">Fouling não é sujeira. É arrasto.</h3>
+    <p class="sample" style="color:var(--graphite);margin-top:16px">Grotesca geométrica, larga e sólida. É a fonte que mais se aproxima do peso de "OCEAN BLUE" no logo, então título e marca conversam. Sempre com espaçamento apertado.</p>
+  </div>
+
+  <div class="typeblock">
+    <span class="tag">Texto · IBM Plex Sans</span>
+    <p class="sample" style="font-size:19px;max-width:62ch">A incrustação no casco aumenta a resistência da embarcação na água. Mais resistência significa mais consumo de combustível, menos velocidade e atraso de rota.</p>
+    <p style="color:var(--graphite);margin-top:12px">Desenhada para documentação técnica. Corporativa sem ser fria, e legível em corpo pequeno, que é o que um relatório de inspeção exige.</p>
+  </div>
+
+  <div class="typeblock">
+    <span class="tag">Dado e etiqueta · IBM Plex Mono</span>
+    <p class="sample" style="font-family:var(--mono);font-size:15px;letter-spacing:.14em;text-transform:uppercase">Mobilização · Cobertura · Classe · Relatório</p>
+    <p style="color:var(--graphite);margin-top:12px">Só em caixa alta, espaçada, e em pedaços curtos. É o que dá o ar de instrumento de medição. Nunca usar em texto corrido.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">Escala</span>
+    <div class="scale">
+      <div><span class="spec">Título de página</span><span style="font-family:var(--display);font-weight:800;font-size:40px;letter-spacing:-.03em">Archivo 800</span></div>
+      <div><span class="spec">Título de seção</span><span style="font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:-.02em">Archivo 700</span></div>
+      <div><span class="spec">Subtítulo</span><span style="font-family:var(--display);font-weight:600;font-size:20px">Archivo 600</span></div>
+      <div><span class="spec">Texto</span><span style="font-size:17px">IBM Plex Sans Regular, 17px, entrelinha 1.65</span></div>
+      <div><span class="spec">Etiqueta</span><span style="font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase">IBM Plex Mono 500</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead">
+    <span class="num">03</span>
+    <h2>O logo, na prática</h2>
+    <p>Regras curtas para o logo nunca aparecer torto quando outra pessoa montar uma peça.</p>
+  </div>
+
+  <div class="dois">
+    <div class="card">
+      <span class="tag">Pode</span>
+      <ul class="plain">
+        <li>Deixar respiro em volta do brasão de pelo menos <strong>metade da altura dele</strong>. Nada encosta nesse espaço.</li>
+        <li>Tamanho mínimo de <strong>18mm</strong> impresso e <strong>52px</strong> em tela, senão o mergulhador vira borrão.</li>
+        <li>Usar o brasão sozinho quando o nome já estiver escrito perto, como no cartão e no perfil de rede social.</li>
+        <li>Aplicar sobre Deep Navy, sobre Fog, ou sobre foto escura e sem detalhe atrás.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag">Não pode</span>
+      <ul class="plain no">
+        <li>Esticar, espremer ou girar.</li>
+        <li>Trocar a cor do brasão ou aplicar sombra e brilho.</li>
+        <li>Colocar sobre foto com muita textura, principalmente água agitada, que é onde ele some.</li>
+        <li>Reescrever o nome em outra fonte. O letreiro é parte do logo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nota">
+    <span class="selo">Pendência técnica</span>
+    <p>O arquivo que temos é <strong>PNG de 256 KB</strong>, que serve para tela mas não para impressão grande nem para bordado. Vale perguntar à Mariana se existe o <strong>vetor</strong> (AI, EPS ou SVG) de quem desenhou. Se não existir, redesenhar em vetor é um serviço à parte que ela vai precisar em algum momento, principalmente para as embalagens que ela marcou.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sechead">
+    <span class="num">04</span>
+    <h2>Aplicações</h2>
+    <p>Ela marcou cinco lugares onde a marca vai aparecer: site, cartão de visita, apresentações, assinatura de email e embalagens. Abaixo, os quatro primeiros desenhados. Tudo aqui é rascunho para olhar e opinar, não arquivo final de gráfica.</p>
+  </div>
+
+  <div class="appgrid">
+    <div class="dir" style="grid-column:1 / -1">
+      <div class="dir-cab">
+        <h3>Cartão · versão escura</h3>
+        <span class="qual">A principal</span>
+      </div>
+      <div class="par">
+        <div class="pc pc-frente">
+          <svg class="ancora" viewBox="0 0 100 140" fill="none" aria-hidden="true">
+          <circle cx="50" cy="15" r="9" stroke="currentColor" stroke-width="5"/>
+          <path d="M50 24 V119" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M24 39 H76" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M12 84 C12 108 30 122 50 122 C70 122 88 108 88 84" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M12 86 L2 68 L23 75 Z" fill="currentColor"/>
+          <path d="M88 86 L98 68 L77 75 Z" fill="currentColor"/>
+        </svg>
+          <div class="lockup">
+            <p class="lk-top">Service</p>
+            <p class="lk-nome">OCEAN BLUE</p>
+            <p class="lk-sub">Diving</p>
+            <span class="fio-latao lk-linha"></span>
+            <p class="lk-tag">Underwater solutions for heavy operations</p>
+          </div>
+        </div>
+        <div class="pc pc-verso claro">
+          <svg class="ancora" viewBox="0 0 100 140" fill="none" aria-hidden="true">
+          <circle cx="50" cy="15" r="9" stroke="currentColor" stroke-width="5"/>
+          <path d="M50 24 V119" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M24 39 H76" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M12 84 C12 108 30 122 50 122 C70 122 88 108 88 84" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M12 86 L2 68 L23 75 Z" fill="currentColor"/>
+          <path d="M88 86 L98 68 L77 75 Z" fill="currentColor"/>
+        </svg>
+          <div class="topo">
+            <div>
+              <p class="pessoa">Mariana Rossiter</p>
+              <p class="papel">Manager</p>
+            </div>
+            <img class="selo" src="material-da-mari/logo.png" alt="">
+          </div>
+          <div class="base">
+            <span class="fio-latao"></span>
+            <p class="contatos">
+              <b>+55 71 99101-5763</b><br>
+              commercial@serviceocean.com.br<br>
+              serviceocean.com.br<br>
+              Salvador · Bahia · Brasil
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="dir-nota">Sem nada centralizado e sem nada no meio. O bloco tipográfico ocupa um canto só, com margem larga em volta, e a âncora entra atrás em <strong>relevo cego</strong>, navy sobre navy, quase invisível. Na gráfica isso vira baixo relevo de verdade: você sente com o dedo antes de enxergar. O fio e as letras pequenas em <strong>latão</strong>, que numa tiragem boa vira hot stamping metálico.</p>
+    </div>
+
+    <div class="dir" style="grid-column:1 / -1">
+      <div class="dir-cab">
+        <h3>Cartão · versão clara</h3>
+        <span class="qual">Para a equipe técnica</span>
+      </div>
+      <div class="par">
+        <div class="pc pc-frente claro">
+          <svg class="ancora" viewBox="0 0 100 140" fill="none" aria-hidden="true">
+          <circle cx="50" cy="15" r="9" stroke="currentColor" stroke-width="5"/>
+          <path d="M50 24 V119" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M24 39 H76" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M12 84 C12 108 30 122 50 122 C70 122 88 108 88 84" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M12 86 L2 68 L23 75 Z" fill="currentColor"/>
+          <path d="M88 86 L98 68 L77 75 Z" fill="currentColor"/>
+        </svg>
+          <div class="lockup">
+            <p class="lk-top">Service</p>
+            <p class="lk-nome">OCEAN BLUE</p>
+            <p class="lk-sub">Diving</p>
+            <span class="fio-latao lk-linha"></span>
+            <p class="lk-tag">Underwater solutions for heavy operations</p>
+          </div>
+        </div>
+        <div class="pc pc-verso" style="background:var(--navy);color:#fff">
+          <svg class="ancora" viewBox="0 0 100 140" fill="none" aria-hidden="true">
+          <circle cx="50" cy="15" r="9" stroke="currentColor" stroke-width="5"/>
+          <path d="M50 24 V119" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M24 39 H76" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M12 84 C12 108 30 122 50 122 C70 122 88 108 88 84" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M12 86 L2 68 L23 75 Z" fill="currentColor"/>
+          <path d="M88 86 L98 68 L77 75 Z" fill="currentColor"/>
+        </svg>
+          <div class="topo">
+            <div>
+              <p class="pessoa" style="color:#fff">Nome do mergulhador</p>
+              <p class="papel" style="color:var(--brass)">Commercial Diver</p>
+            </div>
+            <img class="selo" src="material-da-mari/logo.png" alt="">
+          </div>
+          <div class="base">
+            <span class="fio-latao"></span>
+            <p class="contatos" style="color:rgba(255,255,255,.72)">
+              <b style="color:#fff">+55 71 00000-0000</b><br>
+              nome@serviceocean.com.br<br>
+              serviceocean.com.br<br>
+              Salvador · Bahia · Brasil
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="dir-nota">O mesmo sistema invertido, para o resto da equipe. Mantém a coerência sem todo mundo carregar o cartão escuro, que é o da direção. É assim que consultoria e escritório de engenharia lá fora separam sócio de equipe.</p>
+    </div>
+
+    <div class="mock">
+      <div class="rot"><span>Papel timbrado</span><span>A4</span></div>
+      <div class="a4">
+        <div class="a4-top">
+          <img src="material-da-mari/logo.png" alt="">
+          <div class="n">SERVICE OCEAN BLUE<span>DIVING</span></div>
+        </div>
+        <div class="a4-body">
+          <div class="l m"></div><div class="l"></div><div class="l s"></div>
+          <div style="height:14px"></div>
+          <div class="l"></div><div class="l m"></div><div class="l"></div><div class="l s"></div>
+        </div>
+        <div class="a4-foot">
+          <span>commercial@serviceocean.com.br</span>
+          <span>+55 71 99101-5763</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="rot"><span>Capa de apresentação</span><span>16 : 9</span></div>
+      <div class="slide">
+        <img src="material-da-mari/logo.png" alt="">
+        <div>
+          <h4>Underwater hull maintenance</h4>
+          <div class="sub">Technical proposal · 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mock" style="grid-column:1 / -1">
+      <div class="rot"><span>Assinatura de email · versão limpa</span><span>Substitui a atual</span></div>
+      <div class="sig">
+        <img src="material-da-mari/logo.png" alt="">
+        <div class="divider"></div>
+        <div>
+          <div class="nome">Mariana Rossiter</div>
+          <div class="cargo">Manager</div>
+          <div class="dados">
+            +55 71 99101-5763<br>
+            commercial@serviceocean.com.br<br>
+            serviceocean.com.br
+          </div>
+        </div>
+      </div>
+      <div class="nota" style="margin-top:20px">
+        <span class="selo">Por que mexer na assinatura</span>
+        <p>A atual tem quatro ícones coloridos de rede social que brigam com o azul da marca, e o verde do WhatsApp puxa o olho para longe do nome. Aqui a hierarquia fica: marca, pessoa, contato. Os ícones voltam depois em versão monocromática, se ela fizer questão.</p>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="rot"><span>Post · modelo dado</span><span>1 : 1</span></div>
+      <div class="post">
+        <img src="material-da-mari/logo.png" alt="">
+        <div>
+          <div class="fio"></div>
+          <h4>Zero delay commitment</h4>
+        </div>
+        <div class="rodape">Service Ocean Blue Diving</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="rot"><span>Post · modelo declaração</span><span>1 : 1</span></div>
+      <div class="post" style="background:var(--navy)">
+        <img src="material-da-mari/logo.png" alt="">
+        <div>
+          <div class="fio"></div>
+          <h4>Fouling não é sujeira. É arrasto.</h4>
+        </div>
+        <div class="rodape">serviceocean.com.br</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead">
+    <span class="num">05</span>
+    <h2>O que falta para fechar</h2>
+  </div>
+  <div class="card">
+    <ul class="plain">
+      <li><strong>O vetor do logo</strong>, se existir. Sem ele não dá para imprimir grande nem bordar uniforme.</li>
+      <li><strong>Confirmar o nome oficial.</strong> A assinatura de email dela diz <strong>SERVICE OCEAN BLUE DIVING</strong>, e adotei isso aqui. Se estiver errado, muda tudo que está nesta página.</li>
+      <li><strong>Razão social e endereço completo</strong> para o rodapé do timbrado.</li>
+      <li><strong>Decidir se as embalagens entram agora</strong> ou numa segunda etapa. Ela marcou embalagem nas aplicações e isso pede material próprio.</li>
+      <li><strong>Aval dela na tipografia.</strong> Archivo e IBM Plex são gratuitas, então a equipe inteira instala sem custo de licença.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <span>Service Ocean Blue Diving · sistema de identidade, rascunho 01</span>
+  <span>Ingrid Aragão · Vander Media Group</span>
+</footer>
+
+</div>
