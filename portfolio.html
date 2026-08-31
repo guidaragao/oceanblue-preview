@@ -6,18 +6,7 @@
 <title>Blue Ocean Diving · Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ===========================================================
-   BLUE OCEAN DIVING · portfolio para circular
-   Pedido da Mari, 25/08: "faz um portifolio desse pra gente no
-   final, com as infos do site, que ai a gente ja usa pra circular".
 
-   Mesma linguagem do site: A CHAPA DO CONSTRUTOR. Cada pagina e
-   uma chapa de registro, com o dado gravado no topo e o fio de
-   latao (o bronze da helice deles) como unico acento nao azul.
-
-   A4 paisagem. Imprimir no Chrome com "Background graphics"
-   ligado e margens em Nenhuma.
-   =========================================================== */
 :root{
   --abyss:#0b1b2e; --hull:#0a3a63; --steel:#1a7ba8;
   --surface:#5c9fd0; --ice:#8fc9de; --fog:#f2f5f7;
@@ -36,7 +25,6 @@ img{display:block;max-width:100%}
 }
 .pg.claro{background:var(--fog);color:var(--abyss)}
 
-/* o trilho de registro gravado no topo de toda chapa */
 .reg{
   flex:none;height:11mm;display:flex;align-items:center;gap:0;
   padding:0 16mm;background:rgba(0,0,0,.26);
@@ -72,7 +60,6 @@ b{font-weight:600}
 }
 .pg.claro .rodape{color:#8b9aa5}
 
-/* ---- capa ---- */
 .capa{position:relative}
 .capa .foto{position:absolute;inset:0}
 .capa .foto img{width:100%;height:100%;object-fit:cover}
@@ -95,10 +82,9 @@ b{font-weight:600}
 }
 .linha-latao{height:2px;background:var(--brass);width:38mm;margin:7mm 0 0}
 
-/* ---- listas e fichas ---- */
 .serv{
   display:grid;grid-template-columns:1fr 1fr;gap:0 12mm;margin:0;padding:0;list-style:none;
-  /* ocupa a chapa toda: vazio no rodape de uma peca impressa e vazio SEM intencao */
+  
   flex:1;align-content:space-between;
 }
 .serv li{
@@ -169,7 +155,6 @@ b{font-weight:600}
 </head>
 <body>
 
-<!-- ══════════ 01 · CAPA ══════════ -->
 <section class="pg capa">
   <div class="foto"><img src="img/casco-limpeza.jpg" alt=""></div>
   <div class="veu"></div>
@@ -190,7 +175,6 @@ b{font-weight:600}
   <div class="rodape"><span>Blue Ocean Diving Ltda</span><span>01</span></div>
 </section>
 
-<!-- ══════════ 02 · A EMPRESA ══════════ -->
 <section class="pg claro">
   <div class="reg">
     <i class="forte">Salvador &middot; Bahia &middot; Brasil</i>
@@ -226,7 +210,6 @@ b{font-weight:600}
   <div class="rodape"><span>Blue Ocean Diving Ltda</span><span>02</span></div>
 </section>
 
-<!-- ══════════ 03 · SERVIÇOS ══════════ -->
 <section class="pg">
   <div class="reg">
     <i class="forte">Salvador &middot; Bahia &middot; Brasil</i>
@@ -255,7 +238,6 @@ b{font-weight:600}
   <div class="rodape"><span>Blue Ocean Diving Ltda</span><span>03</span></div>
 </section>
 
-<!-- ══════════ 04 · EQUIPAMENTO ══════════ -->
 <section class="pg">
   <div class="reg">
     <i class="forte">Salvador &middot; Bahia &middot; Brasil</i>
@@ -286,7 +268,6 @@ b{font-weight:600}
   <div class="rodape"><span>Blue Ocean Diving Ltda</span><span>04</span></div>
 </section>
 
-<!-- ══════════ 05 · COMO FUNCIONA ══════════ -->
 <section class="pg claro">
   <div class="reg">
     <i class="forte">Salvador &middot; Bahia &middot; Brasil</i>
@@ -324,7 +305,6 @@ b{font-weight:600}
   <div class="rodape"><span>Blue Ocean Diving Ltda</span><span>05</span></div>
 </section>
 
-<!-- ══════════ 06 · CONTATO ══════════ -->
 <section class="pg">
   <div class="reg">
     <i class="forte">Salvador &middot; Bahia &middot; Brasil</i>
