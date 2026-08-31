@@ -1,34 +1,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ocean Blue Diving · Operations</title>
+<title>Blue Ocean Diving · Operations</title>
 <meta name="description" content="Underwater hull maintenance for large vessels. Fouling removal, in water, with zero delay." data-attr="content" data-pt="Manutencao subaquatica de grandes embarcacoes. Remocao de fouling, na agua, sem atraso." data-en="Underwater hull maintenance for large vessels. Fouling removal, in water, with zero delay.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 
-<header class="top">
+<header class="top" id="cab">
+  <span class="rebite a"></span><span class="rebite b"></span>
+  <span class="rebite c"></span><span class="rebite d"></span>
+
+  <div class="placa">
+    <div class="wrap">
+      <i class="forte">Salvador &middot; Bahia &middot; Brasil</i>
+      <i class="some">CNPJ 66.316.392/0001-00</i>
+      <i class="some" data-pt="Manutenção subaquática de embarcações" data-en="Underwater vessel maintenance">Underwater vessel maintenance</i>
+      <div class="lang">
+        <button data-lang="en">EN</button>
+        <button data-lang="pt">PT</button>
+      </div>
+    </div>
+  </div>
+
   <div class="wrap top-in">
     <a class="brand" href="index.html">
-      <img class="brand-logo" src="assets/logo.png" alt="Service Ocean Blue Diving">
-      <span class="brand-name">SERVICE OCEAN BLUE<span>Diving</span>
-        <em class="brand-tag" data-pt="Soluções subaquáticas para operações pesadas" data-en="Underwater solutions for heavy operations">Underwater solutions for heavy operations</em>
-      </span>
+      <img class="brand-logo" src="assets/logo.png" alt="Blue Ocean Diving">
+      <span class="brand-name">BLUE OCEAN<span>Diving</span></span>
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-label="Menu">MENU</button>
     <nav class="main">
-        <a href="index.html" data-pt="Início" data-en="Home">Home</a>
-        <a href="servicos.html" data-pt="Serviços" data-en="Services">Services</a>
-        <a href="sobre.html" data-pt="A empresa" data-en="Company">Company</a>
-        <a href="certificacoes.html" data-pt="Segurança" data-en="Safety &amp; Compliance">Safety &amp; Compliance</a>
-        <a href="cobertura.html" data-pt="Cobertura" data-en="Coverage">Coverage</a>
-        <a href="galeria.html" aria-current="page" data-pt="Operações" data-en="Operations">Operations</a>
-        <a href="contato.html" data-pt="Contato" data-en="Contact">Contact</a>
+      <a href="index.html" data-pt="Início" data-en="Home">Home</a>
+      <a href="servicos.html" data-pt="Serviços" data-en="Services">Services</a>
+      <a href="sobre.html" data-pt="A empresa" data-en="Company">Company</a>
+      <a href="certificacoes.html" data-pt="Segurança" data-en="Safety &amp; Compliance">Safety &amp; Compliance</a>
+      <a href="cobertura.html" data-pt="Cobertura" data-en="Coverage">Coverage</a>
+      <a href="galeria.html" aria-current="page" data-pt="Operações" data-en="Operations">Operations</a>
+      <a href="contato.html" data-pt="Contato" data-en="Contact">Contact</a>
     </nav>
-    <div class="lang">
-      <button data-lang="en">EN</button>
-      <button data-lang="pt">PT</button>
-    </div>
   </div>
 </header>
 
@@ -42,32 +51,58 @@
 
 <section>
   <div class="wrap">
-    <div class="selo-estudo" data-pt="Imagens de estudo · substituir pelas fotos reais da operação" data-en="Study images · to be replaced with real operation photography">Study images · to be replaced with real operation photography</div>
-    <div class="galeria">
-      <figure class="figura larga">
-        <img src="assets/casco-a.jpg" alt="" loading="lazy">
-        <figcaption data-pt="Incrustação e chapa limpa, lado a lado" data-en="Fouling and clean plating, side by side">Fouling and clean plating, side by side</figcaption>
-      </figure>
-      <figure class="figura">
-        <img src="assets/casco-b.jpg" alt="" loading="lazy">
-        <figcaption data-pt="Detalhe da incrustação" data-en="Marine growth, close up">Marine growth, close up</figcaption>
-      </figure>
-      <figure class="figura">
-        <img src="assets/helice-a.jpg" alt="" loading="lazy">
-        <figcaption data-pt="Hélice antes do polimento" data-en="Propeller before polishing">Propeller before polishing</figcaption>
-      </figure>
-      <figure class="figura larga">
-        <img src="assets/helice-b.jpg" alt="" loading="lazy">
-        <figcaption data-pt="Polimento de hélice em operação" data-en="Propeller polishing under way">Propeller polishing under way</figcaption>
-      </figure>
-      <figure class="figura larga">
-        <img src="assets/equipe-b.jpg" alt="" loading="lazy">
-        <figcaption data-pt="Preparação a bordo, no costado do navio" data-en="Preparation on deck, alongside the vessel">Preparation on deck, alongside the vessel</figcaption>
-      </figure>
-      <figure class="figura">
-        <img src="assets/equipe-a.jpg" alt="" loading="lazy">
-        <figcaption data-pt="Equipamento de mergulho comercial" data-en="Surface supplied diving equipment">Surface supplied diving equipment</figcaption>
-      </figure>
+    <div class="pranchas">
+      <article class="prancha">
+        <div class="pr-num">01</div>
+        <figure class="pr-foto"><img src="assets/reais/casco-limpeza.jpg" alt="" loading="lazy"></figure>
+        <div class="pr-ficha">
+          <p class="pr-leg" data-pt="Inspeção ao vivo, com o navio fundeado" data-en="Live inspection, vessel at anchor">Live inspection, vessel at anchor</p>
+          <dl>
+          <div class="pr-lin"><dt data-pt="Operação" data-en="Operation">Operation</dt><dd data-pt="Inspeção de casco" data-en="Hull inspection">Hull inspection</dd></div>
+          <div class="pr-lin"><dt data-pt="Local" data-en="Location">Location</dt><dd data-pt="Porto de Salvador" data-en="Port of Salvador">Port of Salvador</dd></div>
+          <div class="pr-lin"><dt data-pt="Método" data-en="Method">Method</dt><dd data-pt="Mergulho com suprimento de superfície" data-en="Surface supplied diving">Surface supplied diving</dd></div>
+          <div class="pr-lin"><dt data-pt="Registro" data-en="Record">Record</dt><dd data-pt="Foto e vídeo" data-en="Photo and video">Photo and video</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="prancha">
+        <div class="pr-num">02</div>
+        <figure class="pr-foto"><img src="assets/reais/zhengrong.jpg" alt="" loading="lazy"></figure>
+        <div class="pr-ficha">
+          <p class="pr-leg" data-pt="Costado de graneleiro, Porto de Salvador" data-en="Bulk carrier alongside, Port of Salvador">Bulk carrier alongside, Port of Salvador</p>
+          <dl>
+          <div class="pr-lin"><dt data-pt="Embarcação" data-en="Vessel">Vessel</dt><dd data-pt="Graneleiro sob bandeira do Panamá" data-en="Panama-flagged bulk carrier">Panama-flagged bulk carrier</dd></div>
+          <div class="pr-lin"><dt data-pt="IMO" data-en="IMO">IMO</dt><dd data-pt="9593828" data-en="9593828">9593828</dd></div>
+          <div class="pr-lin"><dt data-pt="Local" data-en="Location">Location</dt><dd data-pt="Porto de Salvador" data-en="Port of Salvador">Port of Salvador</dd></div>
+          <div class="pr-lin"><dt data-pt="Operação" data-en="Operation">Operation</dt><dd data-pt="Inspeção" data-en="Inspection">Inspection</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="prancha">
+        <div class="pr-num">03</div>
+        <figure class="pr-foto"><img src="assets/reais/limpeza-casco.jpg" alt="" loading="lazy"></figure>
+        <div class="pr-ficha">
+          <p class="pr-leg" data-pt="Limpeza de casco em operação" data-en="Hull cleaning under way">Hull cleaning under way</p>
+          <dl>
+          <div class="pr-lin"><dt data-pt="Operação" data-en="Operation">Operation</dt><dd data-pt="Limpeza de casco" data-en="Hull cleaning">Hull cleaning</dd></div>
+          <div class="pr-lin"><dt data-pt="Equipamento" data-en="Equipment">Equipment</dt><dd data-pt="Máquina hidráulica de escova dupla" data-en="Two-brush hydraulic machine">Two-brush hydraulic machine</dd></div>
+          <div class="pr-lin"><dt data-pt="Docagem" data-en="Drydocking">Drydocking</dt><dd data-pt="Nenhuma" data-en="None">None</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="prancha">
+        <div class="pr-num">04</div>
+        <figure class="pr-foto"><img src="assets/reais/helice.jpg" alt="" loading="lazy"></figure>
+        <div class="pr-ficha">
+          <p class="pr-leg" data-pt="Polimento de hélice, com a embarcação na água" data-en="Propeller polishing, vessel still in the water">Propeller polishing, vessel still in the water</p>
+          <dl>
+          <div class="pr-lin"><dt data-pt="Operação" data-en="Operation">Operation</dt><dd data-pt="Polimento de hélice" data-en="Propeller polishing">Propeller polishing</dd></div>
+          <div class="pr-lin"><dt data-pt="Equipamento" data-en="Equipment">Equipment</dt><dd data-pt="Politriz hidráulica" data-en="Hydraulic polisher">Hydraulic polisher</dd></div>
+          <div class="pr-lin"><dt data-pt="Docagem" data-en="Drydocking">Drydocking</dt><dd data-pt="Nenhuma" data-en="None">None</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
     </div>
   </div>
 </section>
@@ -78,10 +113,10 @@
       <h3 data-pt="Material necessário" data-en="Material needed">Material needed</h3>
       <p data-pt="Estrutura pronta. O conteúdo entra assim que a Mariana mandar o material desta página." data-en="Structure is ready. Content goes in as soon as Mariana sends the material for this page.">Structure is ready. Content goes in as soon as Mariana sends the material for this page.</p>
       <ul>
-      <li data-pt="Mergulhador na água, em operação" data-en="Diver in the water, working">Diver in the water, working</li>
+      <li data-pt="As <b>originais destas quatro</b>, mandadas como arquivo e não como foto. O WhatsApp comprimiu duas delas para 552 pixels, o que não aguenta meia página." data-en="The <b>originals of these four</b>, sent as a file and not as a photo. WhatsApp compressed two of them down to 552 pixels, which will not carry half a page.">The <b>originals of these four</b>, sent as a file and not as a photo. WhatsApp compressed two of them down to 552 pixels, which will not carry half a page.</li>
       <li data-pt="Casco antes e depois da limpeza, o par que mais convence" data-en="Hull before and after cleaning, the pair that convinces most">Hull before and after cleaning, the pair that convinces most</li>
-      <li data-pt="Equipamento e embarcação de apoio" data-en="Equipment and support boat">Equipment and support boat</li>
-      <li data-pt="Equipe no cais" data-en="Team on the quay">Team on the quay</li>
+      <li data-pt="Equipamento e embarcação de apoio no cais" data-en="Equipment and support boat at the quay">Equipment and support boat at the quay</li>
+      <li data-pt="A equipe, de rosto. É a página que sustenta o argumento da experiência" data-en="The team, faces visible. It is the page that carries the experience argument">The team, faces visible. It is the page that carries the experience argument</li>
       <li data-pt="Se houver vídeo de inspeção, mesmo curto, vale mais que dez fotos" data-en="If there is inspection footage, even short, it is worth more than ten photographs">If there is inspection footage, even short, it is worth more than ten photographs</li>
       </ul>
     </div>
@@ -102,8 +137,8 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <img src="assets/logo.png" alt="Service Ocean Blue Diving" style="width:78px;height:78px;object-fit:contain;margin-bottom:14px">
-        <span class="brand-name" style="font-size:19px">SERVICE OCEAN BLUE<span>Diving</span></span>
+        <img src="assets/logo.png" alt="Blue Ocean Diving" style="width:78px;height:78px;object-fit:contain;margin-bottom:14px">
+        <span class="brand-name" style="font-size:19px">BLUE OCEAN<span>Diving</span></span>
         <p style="margin-top:16px;max-width:34ch" data-pt="Manutenção subaquática de grandes embarcações. Base em Salvador, Bahia, Brasil." data-en="Underwater maintenance for large vessels. Based in Salvador, Bahia, Brazil.">Underwater maintenance for large vessels. Based in Salvador, Bahia, Brazil.</p>
       </div>
       <div>
@@ -128,9 +163,9 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Ocean Blue Diving</span>
+      <span>© 2026 Blue Ocean Diving</span>
       <span data-pt="Rascunho de trabalho · não publicado" data-en="Working draft · not published">Working draft · not published</span>
     </div>
   </div>
 </footer>
-<script src="assets/i18n.js"></script>
+<script src="assets/i18n.js?v=2"></script>

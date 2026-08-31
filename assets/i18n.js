@@ -62,3 +62,14 @@
     init();
   }
 })();
+
+/* A chapa: a placa de registro recolhe quando a pagina desce.
+   Vive aqui porque as paginas do draft nao fecham </body>, entao
+   injetar <script> por pagina falha silencioso. Um lugar so. */
+(function () {
+  var cab = document.getElementById('cab');
+  if (!cab) return;
+  addEventListener('scroll', function () {
+    cab.classList.toggle('desce', scrollY > 40);
+  }, { passive: true });
+})();

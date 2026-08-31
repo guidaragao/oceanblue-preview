@@ -1,5 +1,5 @@
 /* ===========================================================
-   OCEAN BLUE DIVING · draft 01
+   BLUE OCEAN DIVING · draft 01
    Direcao lida do briefing da Mariana:
    tom 0 (formal no talo) · forma 93 (geometrico, linhas retas)
    densidade 87 (rico em camadas) · intensidade 62 (bold)
@@ -16,6 +16,9 @@
   --signal:#8fc9de;       /* ice, acento em fundo escuro */
   --signal-deep:#1a7ba8;  /* steel blue, acento em fundo claro */
   --ice:#f2f5f7;          /* fog */
+  /* o unico acento que nao e azul: LATAO, amostrado do bronze da helice deles */
+  --brass:#D4AF37;        /* latao em fundo escuro */
+  --brass-dark:#8F660A;   /* latao em fundo claro */
   --paper:#ffffff;
   --graphite:#48606f;
   --line:rgba(11,27,46,.14);
@@ -74,40 +77,91 @@ strong{font-weight:600}
 }
 .on-dark .todo{background:rgba(143,201,222,.16);color:var(--signal);border-color:rgba(143,201,222,.55)}
 
-/* ---------- topbar ---------- */
+/* ---------- topbar: A CHAPA DO CONSTRUTOR ----------
+   Todo navio carrega uma builder's plate parafusada no anteparo:
+   chapa de metal com os dados de registro gravados. E o objeto mais
+   "Governante" do mundo deles, e ninguem no setor usa como design.
+   O header e essa chapa. O registro fica gravado no topo, sempre.
+   Item ativo nao muda de cor: afunda em baixo relevo.            */
 header.top{
-  position:sticky;top:0;z-index:50;
-  background:rgba(11,27,46,.95);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line-dark);
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.05),transparent 40%),
+    linear-gradient(96deg,#12283e 0%,var(--abyss) 42%,#0e2137 100%);
+  border-bottom:2px solid var(--brass-dark);
+  box-shadow:inset 0 -1px 0 rgba(212,175,55,.5);
 }
-.top-in{display:flex;align-items:center;gap:28px;height:74px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
-.brand-logo{width:52px;height:52px;flex:none;object-fit:contain}
-.brand-tag{
-  display:block;font-family:var(--mono);font-size:9px;font-weight:400;
-  letter-spacing:.13em;color:rgba(255,255,255,.5);text-transform:uppercase;margin-top:3px;
+/* os quatro rebites da chapa */
+header.top .rebite{
+  position:absolute;width:4px;height:4px;border-radius:50%;
+  background:rgba(255,255,255,.16);box-shadow:0 1px 0 rgba(0,0,0,.5);
 }
-.brand-name{font-family:var(--display);font-weight:700;font-size:16.5px;letter-spacing:.01em;color:#fff;line-height:1.15}
-.brand-name span{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.16em;color:var(--signal);text-transform:uppercase}
+header.top .rebite.a{left:12px;top:9px}  header.top .rebite.b{right:12px;top:9px}
+header.top .rebite.c{left:12px;bottom:9px} header.top .rebite.d{right:12px;bottom:9px}
 
-nav.main{margin-left:auto;display:flex;align-items:center;gap:26px}
+/* o trilho de registro, gravado na chapa */
+header.top .placa{
+  border-bottom:1px solid rgba(255,255,255,.09);
+  background:rgba(0,0,0,.22);
+  height:31px;overflow:hidden;transition:height .3s var(--ease);
+}
+header.top .placa .wrap{
+  display:flex;align-items:center;height:31px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.17em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);white-space:nowrap;overflow:hidden;
+}
+header.top .placa i{
+  font-style:normal;padding:0 18px;border-right:1px solid rgba(255,255,255,.1);
+  overflow:hidden;text-overflow:ellipsis;
+}
+header.top .placa i:first-child{padding-left:0}
+header.top .placa i.forte{color:var(--brass);letter-spacing:.2em;flex:none}
+header.top .placa .lang{margin-left:auto;flex:none}
+
+.top-in{display:flex;align-items:center;gap:32px;height:76px;transition:height .3s var(--ease)}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none;flex:none}
+.brand-logo{width:46px;height:46px;flex:none;object-fit:contain;transition:.3s var(--ease)}
+.brand-name{
+  font-family:var(--display);font-weight:800;font-size:17px;
+  color:#fff;line-height:1.08;letter-spacing:.004em;
+}
+.brand-name span{
+  display:block;font-family:var(--mono);font-size:10px;font-weight:400;
+  letter-spacing:.3em;color:var(--brass);text-transform:uppercase;margin-top:3px;
+}
+/* a tagline sai do lockup e vira dado da placa: o lockup fica limpo */
+.brand-tag{display:none}
+
+nav.main{margin-left:auto;display:flex;align-items:center;gap:4px}
 nav.main a{
-  font-size:14.5px;font-weight:500;color:rgba(255,255,255,.82);
-  text-decoration:none;padding:6px 0;position:relative;transition:color .18s var(--ease);
+  font-family:var(--display);font-weight:600;font-size:12.8px;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.72);text-decoration:none;
+  padding:10px 15px;border:1px solid transparent;border-radius:2px;
+  transition:.18s var(--ease);
 }
-nav.main a:hover,nav.main a[aria-current="page"]{color:#fff}
-nav.main a[aria-current="page"]::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--signal);
+nav.main a:hover{color:#fff;border-color:rgba(255,255,255,.17)}
+/* ativo = gravado na chapa, baixo relevo em vez de cor */
+nav.main a[aria-current="page"]{
+  color:#fff;background:rgba(0,0,0,.34);
+  border-color:rgba(212,175,55,.55);
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.5);
 }
 
-.lang{display:flex;gap:1px;border:1px solid var(--line-dark);border-radius:2px;overflow:hidden}
+/* estado rolado: a placa de registro recolhe, a chapa aperta */
+header.top.desce .placa{height:0}
+header.top.desce .top-in{height:62px}
+header.top.desce .brand-logo{width:37px;height:37px}
+
+.menu-toggle{display:none}
+body{padding-top:109px}
+
+.lang{display:flex;gap:1px;border:1px solid rgba(255,255,255,.16);border-radius:2px;overflow:hidden}
 .lang button{
-  font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.1em;
-  padding:7px 11px;border:0;cursor:pointer;
-  background:transparent;color:rgba(255,255,255,.6);transition:.18s var(--ease);
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;
+  padding:4px 9px;border:0;cursor:pointer;
+  background:transparent;color:rgba(255,255,255,.55);transition:.18s var(--ease);
 }
-.lang button.on{background:var(--signal-deep);color:#fff}
+.lang button.on{background:var(--brass-dark);color:#fff}
 
 .btn{
   display:inline-flex;align-items:center;gap:9px;
@@ -128,13 +182,13 @@ nav.main a[aria-current="page"]::after{
 /* Foto da operacao entra sangrando no hero inteiro. O veu escuro
    sobe da esquerda pra baixo, entao o texto fica legivel e a imagem
    respira na direita, que era exatamente o buraco da versao anterior.
-   Trocar hero-a.jpg por hero-b.jpg muda a foto, so isso. */
+   Foto REAL do Felipe, com o lettering do macacao removido. */
 .hero{
   /* padding zerado de proposito: .hero e um <section> e estava somando
      o padding:96px da regra global ao padding do proprio .hero-in.
      Padding dobrado era a causa do vao que sobrava em cima e embaixo. */
   padding:0;
-  background:#0b1b2e url('hero-a.jpg') center right / cover no-repeat;
+  background:#0b1b2e url('reais/casco-limpeza.jpg') center 38% / cover no-repeat;
   color:#fff;position:relative;overflow:hidden;
 }
 .hero::before{
@@ -266,18 +320,27 @@ footer.site p{color:rgba(255,255,255,.6);font-size:15.5px}
   .grid-3,.grid-2,.grid-4{grid-template-columns:1fr}
   .form-grid{grid-template-columns:1fr}
   nav.main{
-    position:fixed;inset:74px 0 auto 0;background:var(--abyss);
-    flex-direction:column;align-items:stretch;gap:0;padding:14px 20px 22px;
-    border-bottom:1px solid var(--line-dark);display:none;
+    position:fixed;inset:auto 0 auto 0;top:var(--cab-h,109px);background:var(--abyss);
+    flex-direction:column;align-items:stretch;gap:0;padding:10px 20px 20px;
+    border-bottom:2px solid var(--brass-dark);display:none;
   }
   nav.main.open{display:flex}
-  nav.main a{padding:13px 0;border-bottom:1px solid var(--line-dark);font-size:16px}
-  .menu-toggle{
-    display:inline-flex;margin-left:auto;background:none;border:1px solid var(--line-dark);
-    border-radius:2px;color:#fff;padding:9px 12px;cursor:pointer;font-family:var(--mono);font-size:12px;
+  nav.main a{
+    padding:14px 0;border-bottom:1px solid var(--line-dark);
+    font-size:14px;border-radius:0;border-left:0;border-right:0;border-top:0;
   }
-  .lang{order:3}
-  .top-in{gap:12px}
+  nav.main a[aria-current="page"]{background:none;box-shadow:none;border-color:var(--brass);color:var(--brass)}
+  .menu-toggle{
+    display:inline-flex;margin-left:auto;background:rgba(0,0,0,.3);
+    border:1px solid rgba(212,175,55,.4);
+    border-radius:2px;color:#fff;padding:9px 13px;cursor:pointer;
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  }
+  header.top .placa .wrap{font-size:9.5px;letter-spacing:.09em}
+  header.top .placa i.some{display:none}
+  header.top .rebite{display:none}
+  .top-in{gap:12px;height:66px}
+  body{padding-top:99px}
   .foot-grid{grid-template-columns:1fr}
 }
 
@@ -317,4 +380,132 @@ footer.site p{color:rgba(255,255,255,.6);font-size:15.5px}
 @media (max-width:600px){
   .galeria{grid-template-columns:1fr}
   .galeria .figura.larga{grid-column:span 1}
+}
+
+/* ---------- ficha tecnica: serviço e equipamento ----------
+   Densidade 87 do briefing dela, resolvida como denso em INFORMACAO
+   e limpo em RUIDO. Numero, nunca adjetivo: e o que separa a Blue Ocean
+   da Subsea Global. Dados tirados do portfolio e do PDF de equipamento
+   da empresa antiga, que o Felipe confirmou como sendo o mesmo parque. */
+.lista-serv{
+  margin:36px 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1px;
+}
+/* o fio separador nasce da CELULA, nao do fundo do container.
+   Se nascesse do container, a celula vazia do fim da grade
+   apareceria como um bloco cinza sem motivo. */
+.lista-serv li{
+  list-style:none;background:var(--paper);padding:20px 22px;
+  display:flex;gap:15px;align-items:baseline;
+  box-shadow:0 0 0 1px var(--line);
+}
+.lista-serv .n{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;
+  color:var(--brass-dark);flex:none;
+}
+.lista-serv .t{font-size:16px;line-height:1.42}
+
+.ficha-tec{width:100%;border-collapse:collapse;margin-top:34px;font-size:15px}
+.ficha-tec caption{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--brass-dark);text-align:left;padding-bottom:14px;
+}
+.ficha-tec th,.ficha-tec td{
+  text-align:left;padding:13px 16px 13px 0;
+  border-bottom:1px solid var(--line);vertical-align:top;
+}
+.ficha-tec th{
+  font-family:var(--display);font-weight:600;font-size:15px;
+  white-space:nowrap;width:36%;letter-spacing:-.005em;
+}
+.ficha-tec td{font-family:var(--mono);font-size:13.5px;line-height:1.6;color:var(--graphite)}
+.ficha-tec tr:last-child th,.ficha-tec tr:last-child td{border-bottom:0}
+.on-dark .ficha-tec th{color:#fff}
+.on-dark .ficha-tec td{color:rgba(255,255,255,.66)}
+.on-dark .ficha-tec th,.on-dark .ficha-tec td{border-bottom-color:var(--line-dark)}
+.on-dark .ficha-tec caption{color:var(--brass)}
+
+/* o protocolo de entrega: o unico bloco com fio de latao do corpo */
+.protocolo{
+  border-left:2px solid var(--brass);padding:4px 0 4px 26px;margin-top:40px;max-width:64ch;
+}
+.protocolo h4{font-family:var(--display);font-size:17px;margin:0 0 10px}
+.protocolo p{margin:0;color:var(--graphite)}
+.on-dark .protocolo p{color:rgba(255,255,255,.72)}
+
+@media(max-width:640px){
+  .ficha-tec th{width:auto;white-space:normal;display:block;padding-bottom:4px;border-bottom:0}
+  .ficha-tec td{display:block;padding-left:0}
+}
+
+/* ---------- o lugar: Salvador como argumento, nao como limitacao ----------
+   Ordem da Ingrid em 30/08: dar enfase que e Salvador, Bahia, Brasil.
+   Um porto so vira forca quando o nome do porto ocupa o tamanho de um titulo. */
+.lugar{
+  display:grid;grid-template-columns:minmax(260px,.85fr) 1.15fr;gap:56px;
+  align-items:start;padding-bottom:8px;
+}
+.lugar-nome{border-left:2px solid var(--brass);padding-left:26px}
+.lugar-et{
+  display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--brass-dark);margin-bottom:14px;
+}
+.lugar-nome strong{
+  display:block;font-family:var(--display);font-weight:800;
+  font-size:clamp(30px,3.6vw,44px);line-height:1.02;letter-spacing:-.025em;
+}
+.lugar-nome em{
+  display:block;font-style:normal;font-family:var(--mono);font-size:13px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--graphite);margin-top:12px;
+}
+.lugar-txt p{font-size:17.5px;line-height:1.62;color:var(--graphite);margin:0 0 18px}
+.lugar-txt p b{color:var(--abyss);font-weight:600}
+@media(max-width:860px){
+  .lugar{grid-template-columns:1fr;gap:30px}
+}
+
+/* ---------- registro de inspeção (pagina Operacoes) ----------
+   A Ingrid reprovou a galeria em grade: "ta muito feio".
+   Estava certa. Duas celulas largas numa grade de 3 colunas
+   deixavam um buraco branco no canto, e uma foto de 2400px
+   ao lado de uma de 552px na mesma altura escancarava a
+   diferenca de qualidade.
+
+   O erro de fundo era falta de IDEIA. O que essa empresa
+   entrega de verdade e RELATORIO FOTOGRAFICO de inspecao,
+   em 3 a 4 dias uteis. Entao a pagina e o relatorio: prancha
+   numerada com ficha de dados, como registro de mergulho.
+   Como a prancha tem largura modesta por natureza, foto
+   pequena para de ser problema e vira formato.              */
+.pranchas{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.prancha{
+  display:grid;grid-template-columns:auto minmax(0,1.15fr) minmax(0,.85fr);
+  gap:0 34px;align-items:start;
+  padding:34px 0;border-bottom:1px solid var(--line);
+}
+.pr-num{
+  font-family:var(--mono);font-size:12px;letter-spacing:.2em;
+  color:var(--brass-dark);padding-top:5px;width:34px;flex:none;
+}
+.pr-foto{margin:0;overflow:hidden;background:var(--abyss);aspect-ratio:4/3}
+.pr-foto img{width:100%;height:100%;object-fit:cover}
+.pr-ficha{padding-top:2px}
+.pr-leg{
+  font-family:var(--display);font-weight:600;font-size:18px;line-height:1.3;
+  letter-spacing:-.01em;color:var(--abyss);margin:0 0 20px;
+}
+.pr-ficha dl{margin:0}
+.pr-lin{
+  display:grid;grid-template-columns:minmax(96px,34%) 1fr;gap:16px;
+  padding:9px 0;border-top:1px solid var(--line);
+}
+.pr-lin dt{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--graphite);
+}
+.pr-lin dd{margin:0;font-family:var(--mono);font-size:13px;line-height:1.45;color:var(--abyss)}
+@media(max-width:860px){
+  .prancha{grid-template-columns:34px 1fr;gap:0 18px}
+  .pr-ficha{grid-column:2;padding-top:20px}
 }
