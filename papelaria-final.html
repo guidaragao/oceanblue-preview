@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blue Ocean Diving &middot; papelaria final</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   BLUE OCEAN DIVING · papelaria, 3 direcoes
+   Cartao 90x50mm · Timbrado A4 210x297mm
+
+   Regra da casa: peca precisa de IDEIA ESTRUTURAL tirada do
+   negocio do cliente, nao de elementos bem posicionados.
+   Vazio SEM intencao = amador. Vazio COM intencao = caro.
+
+   As tres ideias:
+   A · LINHA D'AGUA   — eles trabalham exatamente nela
+   B · CHAPA          — a builder's plate, mesma do site escolhido
+   C · MARCA DE CALADO— a regua pintada na proa
+
+   Em todas: bloco tipografico num CANTO so, margem larga,
+   nada centralizado, nada preenchendo o meio. Marca d'agua
+   em RELEVO CEGO (mesma cor do fundo, opacidade baixissima),
+   nao por cima do conteudo. Raio 0 no papel, 9px na tela.
+   =========================================================== */
+:root{
+  --abyss:#0b1b2e; --hull:#0a3a63; --steel:#1a7ba8;
+  --surface:#5c9fd0; --ice:#8fc9de; --fog:#f2f5f7;
+  --brass:#EAAA1F; --brass-dark:#C28A00;
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#4a545e;color:#fff;font-family:var(--body);font-size:17px;line-height:1.6}
+img{display:block;max-width:100%}
+
+.topo{padding:54px 44px 34px;max-width:940px}
+.topo h1{font-family:var(--display);font-weight:800;font-size:38px;letter-spacing:-.025em;margin:0 0 16px;line-height:1.05}
+.topo p{color:rgba(255,255,255,.78);margin:0 0 12px}
+.topo b{color:var(--brass)}
+
+.bloco{padding:40px 44px 10px;border-top:1px solid rgba(255,255,255,.16)}
+.cab{display:flex;align-items:baseline;gap:15px;flex-wrap:wrap;margin-bottom:8px}
+.cab h2{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.02em;margin:0}
+.cab .let{font-family:var(--mono);font-size:13px;letter-spacing:.24em;color:var(--brass)}
+.ideia{color:rgba(255,255,255,.78);max-width:76ch;margin:0 0 6px;font-size:16.5px}
+.ideia strong{color:#fff;font-weight:600}
+.acab{font-family:var(--mono);font-size:13px;color:var(--ice);max-width:76ch;margin:0 0 26px;letter-spacing:.01em}
+.rot{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0 0 12px}
+.pecas{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start;margin-bottom:34px}
+
+/* ---------- suportes ---------- */
+.cart{
+  width:90mm;height:50mm;position:relative;overflow:hidden;
+  background:var(--abyss);color:#fff;box-shadow:0 14px 34px rgba(0,0,0,.4);
+}
+.tim{
+  width:210mm;height:297mm;position:relative;overflow:hidden;
+  background:#fff;color:var(--abyss);box-shadow:0 14px 34px rgba(0,0,0,.4);
+  transform:scale(.46);transform-origin:top left;margin-bottom:-160mm;margin-right:-113mm;
+}
+.claro{background:var(--fog);color:var(--abyss)}
+
+/* marca d'agua em relevo cego: mesma cor do fundo, sangrando pela borda.
+   Na grafica vira baixo relevo de verdade, que se sente com o dedo. */
+.relevo{position:absolute;opacity:.05;pointer-events:none;object-fit:contain}
+.cart .relevo{width:64mm;right:-19mm;bottom:-17mm}
+/* A Ingrid reprovou a marca d'agua no timbrado: "ta muito ruimmmmmm".
+   Certa. Eu tinha DESENHADO um simbolo generico em vez de usar o brasao
+   deles, e num A4 o borrao fica grande e vago. Timbrado fica limpo.
+   No cartao o relevo continua, porque la ele e pequeno e sangra pela borda. */
+.tim  .relevo{display:none}
+.claro .relevo{opacity:.075}
+
+.fio{height:1px;background:var(--brass);width:34px}
+.mini{
+  font-family:var(--mono);font-size:6.4pt;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--brass);
+}
+.tim .mini{font-size:7.4pt}
+
+.marca{font-family:var(--display);font-weight:800;letter-spacing:.004em;line-height:1.05}
+.marca span{
+  display:block;font-family:var(--mono);font-weight:400;
+  letter-spacing:.42em;color:var(--brass);
+}
+.cart .marca{font-size:13.5pt} .cart .marca span{font-size:6.6pt;margin-top:2.1mm}
+.cart .nome{font-size:10pt}
+.cart .cargo{margin-bottom:2.6mm}
+.tim  .marca{font-size:19pt}   .tim  .marca span{font-size:8.6pt;margin-top:3mm}
+
+.dados{font-family:var(--mono);font-size:6.6pt;line-height:1.58;letter-spacing:.03em}
+.cart .dados{color:rgba(255,255,255,.72)}
+.cart.claro .dados{color:#5a6b78}
+.tim .dados{font-size:8pt;line-height:1.8;color:#5a6b78}
+.nome{font-family:var(--display);font-weight:700;font-size:10.5pt;letter-spacing:-.005em;margin-bottom:.8mm}
+.cargo{font-family:var(--mono);font-size:6.4pt;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:3.4mm}
+
+/* ═══ A · LINHA D'AGUA ═══
+   O corte horizontal duro na MESMA altura na frente e no verso:
+   e o que prova que as duas sao a mesma peca. */
+.a-ar{position:absolute;left:0;right:0;top:0;height:20mm;background:var(--abyss)}
+.a-linha{position:absolute;left:0;right:0;top:20mm;height:.6mm;background:var(--brass)}
+.a-agua{position:absolute;left:0;right:0;top:20.6mm;bottom:0;background:linear-gradient(180deg,#07182b,#0b1b2e)}
+.a-conteudo{position:absolute;inset:0;padding:6mm 7mm}
+.a-topo{height:14mm;display:flex;align-items:center;gap:3.6mm}
+.a-topo img{width:11mm;height:11mm;object-fit:contain;flex:none}
+.a-baixo{position:absolute;left:7mm;right:7mm;bottom:5mm}
+/* timbrado A: a linha corre alto e o texto vive na agua */
+.tim .a-ar{height:44mm} .tim .a-linha{top:44mm;height:.8mm} .tim .a-agua{top:44.8mm;background:#fff}
+.tim .a-conteudo{padding:13mm 18mm}
+.tim .a-topo{height:31mm;gap:7mm}
+.tim .a-topo img{width:23mm;height:23mm}
+.tim .a-baixo{left:18mm;right:18mm;bottom:13mm}
+
+/* ═══ B · CHAPA ═══
+   Builder's plate: rebite no canto, registro gravado no topo,
+   fio de ouro na base. Mesma linguagem do site escolhido. */
+.b-plate{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),transparent 38%),
+             linear-gradient(96deg,#12283e,#0b1b2e 44%,#0e2137);
+  border-bottom:.7mm solid var(--brass-dark);
+}
+.b-claro .b-plate{background:linear-gradient(96deg,#fff,var(--fog) 48%,#eaeff2);border-bottom-color:var(--brass)}
+.b-reg{
+  position:absolute;left:0;right:0;top:0;height:6.4mm;
+  background:rgba(0,0,0,.26);border-bottom:.2mm solid rgba(255,255,255,.11);
+  display:flex;align-items:center;padding:0 7mm;
+  font-family:var(--mono);font-size:5.5pt;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);
+}
+.b-claro .b-reg{background:rgba(11,27,46,.05);border-bottom-color:rgba(11,27,46,.13);color:#7d8d99}
+.b-reg b{color:var(--brass);font-weight:500}
+.b-claro .b-reg b{color:var(--brass-dark)}
+.b-reg span{margin-left:auto}
+.b-conteudo{position:absolute;left:0;right:0;top:6.4mm;bottom:0;padding:5mm 7mm 6mm}
+.reb{position:absolute;width:.9mm;height:.9mm;border-radius:50%;background:rgba(255,255,255,.17);box-shadow:0 .1mm 0 rgba(0,0,0,.5)}
+.b-claro .reb{background:rgba(11,27,46,.16)}
+.reb.r1{left:2.2mm;top:2.2mm} .reb.r2{right:2.2mm;top:2.2mm}
+.reb.r3{left:2.2mm;bottom:2.2mm} .reb.r4{right:2.2mm;bottom:2.2mm}
+.tim .b-reg{height:13mm;padding:0 18mm;font-size:7pt}
+.tim .b-conteudo{top:13mm;padding:13mm 18mm}
+.tim .reb{width:1.7mm;height:1.7mm}
+.tim .reb.r1{left:5mm;top:5mm} .tim .reb.r2{right:5mm;top:5mm}
+.tim .reb.r3{left:5mm;bottom:5mm} .tim .reb.r4{right:5mm;bottom:5mm}
+
+/* ═══ C · MARCA DE CALADO ═══
+   A regua pintada na proa: numerais e tracos de 20 em 20cm,
+   subindo pela lateral esquerda. O bloco de texto vive no canto. */
+.c-reg{position:absolute;left:0;top:0;bottom:0;width:13mm;border-right:.2mm solid rgba(255,255,255,.14)}
+.c-claro .c-reg{border-right-color:rgba(11,27,46,.13)}
+.c-marca{position:absolute;left:0;display:flex;align-items:center;gap:1.6mm;padding-left:3.4mm}
+.c-marca i{
+  font-style:normal;font-family:var(--mono);font-size:5.6pt;letter-spacing:.14em;
+  color:rgba(234,170,31,.62);
+}
+.c-claro .c-marca i{color:var(--brass-dark);opacity:.7}
+.c-marca u{display:block;text-decoration:none;height:.35mm;background:rgba(234,170,31,.5);width:3.2mm}
+.c-marca.forte i{color:var(--brass);font-size:6.4pt}
+.c-marca.forte u{width:6.4mm;height:.7mm;background:var(--brass)}
+.c-conteudo{position:absolute;left:13mm;right:0;top:0;bottom:0;padding:6mm 7mm}
+.tim .c-reg{width:26mm}
+.tim .c-marca{padding-left:7mm;gap:3mm}
+.tim .c-marca i{font-size:7pt} .tim .c-marca u{width:6mm}
+.tim .c-marca.forte i{font-size:8pt} .tim .c-marca.forte u{width:12mm;height:1mm}
+.tim .c-conteudo{left:26mm;padding:13mm 18mm}
+
+/* corpo do timbrado: a carta de verdade, pra ver o texto correndo */
+.carta{font-size:8.6pt;line-height:1.75;color:#48606f;max-width:64ch;margin-top:9mm}
+.carta .dt{font-family:var(--mono);font-size:7.4pt;letter-spacing:.16em;color:#8b9aa5;margin-bottom:6mm}
+.carta p{margin:0 0 4mm}
+.rod-tim{
+  position:absolute;left:18mm;right:18mm;bottom:12mm;padding-top:4mm;
+  border-top:.2mm solid rgba(11,27,46,.13);
+  font-family:var(--mono);font-size:6.8pt;letter-spacing:.13em;text-transform:uppercase;color:#8b9aa5;
+  display:flex;justify-content:space-between;gap:10mm;
+}
+</style>
+
+<style>
+/* ── ajustes da versao FINAL (so a direcao C) ── */
+.topo h1 .let{font-family:var(--mono);font-size:14px;letter-spacing:.26em;color:var(--brass);display:block;margin-bottom:12px;font-weight:400}
+.selo{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+      color:#0b1b2e;background:var(--brass);padding:3px 8px;border-radius:2px;vertical-align:2px}
+.selo.vazio{background:transparent;color:var(--brass);border:1px solid rgba(234,170,31,.5)}
+.pess{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+      color:rgba(255,255,255,.5);margin:0 0 9px}
+.pess b{color:#fff;font-weight:500}
+.cartela{display:flex;flex-direction:column;gap:11px}
+.grafica{background:rgba(0,0,0,.22);border-left:2px solid var(--brass-dark);padding:20px 24px;max-width:78ch;margin:6px 0 34px}
+.grafica h3{font-family:var(--display);font-size:17px;margin:0 0 10px;font-weight:700}
+.grafica ul{margin:0;padding-left:19px;color:rgba(255,255,255,.78);font-size:15.5px;line-height:1.75}
+.grafica li b{color:var(--brass)}
+.papel{background:#fff;padding:28px 30px;max-width:640px;border-radius:2px;margin-bottom:12px}
+.como{font-family:var(--mono);font-size:13.5px;color:var(--ice);max-width:78ch;margin:16px 0 30px;letter-spacing:.01em}
+.conf{color:#ffd27a;font-family:var(--mono);font-size:13px;letter-spacing:.01em;max-width:78ch;margin:0 0 26px}
+</style>
+
+
+<style>
+/* relevo cego: com o brasao novo (mais limpo e maior) o antigo .075 no
+   claro virava MANCHA. Emboss de verdade quase nao tem cor: baixa a
+   opacidade e joga mais pra fora, so um pedaco sangrando pelo canto. */
+.cart .relevo{width:56mm;right:-29mm;bottom:-22mm}
+.claro .relevo{opacity:.085}
+.cart .relevo{opacity:.10}
+/* o rodape da frente estava quebrando em duas linhas */
+.cart .mini{letter-spacing:.3em;white-space:nowrap}
+</style>
+
+<style>
+/* ---- impressao: A4 retrato, fundo claro ---- */
+@page{size:210mm 297mm;margin:0}
+@media print{
+  body{background:#fff;color:var(--abyss)}
+  .topo{padding:22mm 20mm 10mm;max-width:none;page-break-after:always;break-after:page}
+  .topo h1{font-size:30pt;color:var(--abyss)}
+  .topo h1 .let{color:var(--brass-dark);font-size:11pt}
+  .topo p{color:#48606f;font-size:11pt}
+  .topo b{color:var(--brass-dark)}
+  .bloco{
+    padding:18mm 20mm 0;border-top:0;
+    page-break-before:always;break-before:page;
+  }
+  .cab h2{color:var(--abyss);font-size:22pt}
+  .cab .let{color:var(--brass-dark)}
+  .ideia{color:#48606f;font-size:10.5pt;max-width:none}
+  .ideia strong{color:var(--abyss)}
+  .acab{color:var(--brass-dark);font-size:9.5pt;max-width:none;margin-bottom:7mm}
+  .conf{color:#48606f;font-size:9.5pt;max-width:none;margin-bottom:7mm}
+  .conf b{color:var(--brass-dark)}
+  .pess{color:#8b9aa5;font-size:8.5pt;margin-bottom:3mm}
+  .pess b{color:var(--abyss)}
+  .selo.vazio{color:var(--brass-dark);border-color:rgba(194,138,0,.5)}
+  .pecas{gap:9mm 8mm;margin-bottom:8mm}
+  .cartela{page-break-inside:avoid;break-inside:avoid}
+  .cart{box-shadow:none;outline:.2mm solid rgba(11,27,46,.22)}
+  .grafica{background:#f4f7f9;color:var(--abyss);max-width:none;padding:8mm 10mm;page-break-inside:avoid}
+  .grafica h3{color:var(--abyss);font-size:13pt}
+  .grafica ul{color:#48606f;font-size:10pt}
+  .grafica li b{color:var(--brass-dark)}
+  /* timbrado menor pra caber a folha inteira numa pagina */
+  .tim{transform:scale(.62);margin-bottom:-115mm;margin-right:-80mm;box-shadow:none;outline:.2mm solid rgba(11,27,46,.22)}
+  /* assinaturas: cada bloco de pessoa inteiro, sem cortar no meio */
+  .papel{border:.2mm solid rgba(11,27,46,.14);page-break-inside:avoid;break-inside:avoid;max-width:none}
+  .como{color:#48606f;font-size:9.5pt;max-width:none}
+  #assin{page-break-before:always;break-before:page}
+}
+</style>
+
+<style>
+@media print{
+  /* dois cartoes por linha: 90mm nao cabe 2x na area util de 170mm,
+     entao a cartela inteira encolhe (zoom escala o layout, transform nao) */
+  #cartoes .cartela{zoom:.8}
+  #cartoes .pecas{gap:6mm 6mm;margin-bottom:5mm}
+  #cartoes .grafica{padding:6mm 9mm;margin:0}
+  #cartoes .grafica ul{font-size:9.5pt;line-height:1.65}
+  #cartoes .acab{margin-bottom:5mm}
+  /* bloco de altura travada: o que sobra nao vaza pra folha seguinte */
+  #cartoes,#timbrado{height:297mm;overflow:hidden;page-break-inside:avoid}
+  #timbrado .tim{transform:scale(.66);margin-bottom:-101mm;margin-right:-71mm}
+  /* cada pessoa das assinaturas fica inteira na mesma folha */
+  #assin .papel{margin-bottom:9px}
+}
+</style>
+</head>
+<body>
+
+<div class="topo">
+  <h1><span class="let">DIRE&Ccedil;&Atilde;O C &middot; ESCOLHIDA</span>A marca de calado</h1>
+  <p>A r&eacute;gua de calado pintada na proa, com os numerais e tra&ccedil;os subindo pela lateral. O tra&ccedil;o cheio marca a <b>linha d'&aacute;gua</b>, que &eacute; exatamente onde voc&ecirc;s trabalham. &Eacute; a tipografia nativa do mundo de voc&ecirc;s e nenhum concorrente usa como desenho.</p>
+  <p>Aqui est&aacute; a dire&ccedil;&atilde;o fechada e aplicada: <b>cart&atilde;o por pessoa</b>, <b>timbrado A4</b> e <b>assinatura de email por pessoa</b>. O brasão j&aacute; est&aacute; com o <b>ouro na linha d'&aacute;gua</b>, a vers&atilde;o escolhida.</p>
+</div>
+
+<div class="bloco" id="cartoes">
+  <div class="cab"><span class="let">01</span><h2>Cart&atilde;o &middot; 90 &times; 50 mm</h2></div>
+  <p class="ideia">A frente &eacute; a mesma pra todo mundo: a marca sobre o azul, com a r&eacute;gua correndo na lateral. O <strong>verso muda por pessoa</strong> e vem na vers&atilde;o clara, que &eacute; como escrit&oacute;rio de engenharia l&aacute; fora separa a pe&ccedil;a institucional da pessoal.</p>
+  <p class="acab">&#8627; Acabamento pra vender: a r&eacute;gua inteira em <b>relevo cego</b>, s&oacute; o tra&ccedil;o da linha d'&aacute;gua em hot stamping ouro. Se l&ecirc; com o dedo antes de enxergar. Papel 300g.</p>
+  <div class="pecas">
+  <div class="cartela">
+    <p class="pess"><b>Frente</b> &middot; igual pra todo mundo</p>
+    <div class="cart">
+      <img class="relevo" src="img/carimbo-branco.png?v=5" alt="">
+      <div class="c-reg">
+        <div class="c-marca" style="top:5mm"><u></u><i>10</i></div>
+        <div class="c-marca" style="top:12mm"><u></u><i>08</i></div>
+        <div class="c-marca" style="top:19mm"><u></u><i>06</i></div>
+        <div class="c-marca forte" style="top:26mm"><u></u><i>04</i></div>
+        <div class="c-marca" style="top:33mm"><u></u><i>02</i></div>
+        <div class="c-marca" style="top:40mm"><u></u><i>00</i></div>
+      </div>
+      <div class="c-conteudo" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:3.4mm">
+          <img src="img/logo.png?v=5" alt="" style="width:11mm;height:11mm;object-fit:contain">
+          <div class="marca">BLUE OCEAN<span>DIVING</span></div>
+        </div>
+        <div>
+          <div class="fio" style="margin-bottom:2.6mm"></div>
+          <div class="mini">Salvador de Bahia &middot; Brasil</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cartela">
+    <p class="pess"><b>Mariana Rossiter</b> &middot; verso</p>
+    <div class="cart c-claro claro">
+      <img class="relevo" src="img/carimbo-navy.png?v=5" alt="">
+      <div class="c-reg">
+        <div class="c-marca" style="top:5mm"><u></u><i>10</i></div>
+        <div class="c-marca" style="top:12mm"><u></u><i>08</i></div>
+        <div class="c-marca" style="top:19mm"><u></u><i>06</i></div>
+        <div class="c-marca forte" style="top:26mm"><u></u><i>04</i></div>
+        <div class="c-marca" style="top:33mm"><u></u><i>02</i></div>
+        <div class="c-marca" style="top:40mm"><u></u><i>00</i></div>
+      </div>
+      <div class="c-conteudo" style="display:flex;flex-direction:column;justify-content:flex-end">
+        <div class="nome">Mariana Rossiter</div>
+        <div class="cargo" style="color:var(--brass-dark)">General Manager</div>
+        <div class="dados">
+          commercial@blueoceandiving.com.br<br>
+          +55 71 99101&#8209;5763<br>
+          Rua do Pilar 15 &middot; Com&eacute;rcio &middot; Salvador BA
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cartela">
+    <p class="pess"><b>Thiago Cruz</b> &middot; verso <span class="selo vazio">telefone a conferir</span></p>
+    <div class="cart c-claro claro">
+      <img class="relevo" src="img/carimbo-navy.png?v=5" alt="">
+      <div class="c-reg">
+        <div class="c-marca" style="top:5mm"><u></u><i>10</i></div>
+        <div class="c-marca" style="top:12mm"><u></u><i>08</i></div>
+        <div class="c-marca" style="top:19mm"><u></u><i>06</i></div>
+        <div class="c-marca forte" style="top:26mm"><u></u><i>04</i></div>
+        <div class="c-marca" style="top:33mm"><u></u><i>02</i></div>
+        <div class="c-marca" style="top:40mm"><u></u><i>00</i></div>
+      </div>
+      <div class="c-conteudo" style="display:flex;flex-direction:column;justify-content:flex-end">
+        <div class="nome">Thiago Cruz</div>
+        <div class="cargo" style="color:var(--brass-dark)">Commercial Manager</div>
+        <div class="dados">
+          thiago@blueoceandiving.com.br<br>
+          +55 71 9926&#8209;6861<br>
+          Rua do Pilar 15 &middot; Com&eacute;rcio &middot; Salvador BA
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cartela">
+    <p class="pess"><b>Felipe Campos Neves</b> &middot; verso <span class="selo vazio">cargo a confirmar</span></p>
+    <div class="cart c-claro claro">
+      <img class="relevo" src="img/carimbo-navy.png?v=5" alt="">
+      <div class="c-reg">
+        <div class="c-marca" style="top:5mm"><u></u><i>10</i></div>
+        <div class="c-marca" style="top:12mm"><u></u><i>08</i></div>
+        <div class="c-marca" style="top:19mm"><u></u><i>06</i></div>
+        <div class="c-marca forte" style="top:26mm"><u></u><i>04</i></div>
+        <div class="c-marca" style="top:33mm"><u></u><i>02</i></div>
+        <div class="c-marca" style="top:40mm"><u></u><i>00</i></div>
+      </div>
+      <div class="c-conteudo" style="display:flex;flex-direction:column;justify-content:flex-end">
+        <div class="nome">Felipe Campos Neves</div>
+        <div class="cargo" style="color:var(--brass-dark)">Managing Partner</div>
+        <div class="dados">
+          felipe@blueoceandiving.com.br<br>
+          +55 71 99682&#8209;2101<br>
+          Rua do Pilar 15 &middot; Com&eacute;rcio &middot; Salvador BA
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="grafica">
+    <h3>Ficha pra gr&aacute;fica</h3>
+    <ul>
+      <li>Formato <b>90 &times; 50 mm</b>, sangria de 3 mm, papel <b>300g</b></li>
+      <li>Frente em azul <b>#0B1B2E</b> chapado, verso no claro <b>#F2F5F7</b></li>
+      <li><b>Relevo cego</b> na r&eacute;gua de calado e no bras&atilde;o de fundo</li>
+      <li><b>Hot stamping ouro</b> s&oacute; no tra&ccedil;o cheio da linha d'&aacute;gua</li>
+      <li>Ouro da marca: <b>#EAAA1F</b> no escuro, <b>#C28A00</b> no claro</li>
+    </ul>
+  </div>
+</div>
+
+<div class="bloco" id="timbrado">
+  <div class="cab"><span class="let">02</span><h2>Timbrado A4</h2></div>
+  <p class="ideia">A mesma r&eacute;gua, agora correndo os 297 mm da folha. A carta vive num canto s&oacute;, com margem larga em volta. Sem marca d'&aacute;gua no meio do texto.</p>
+  <div class="pecas">
+  <div class="tim c-claro claro">
+    <img class="relevo" src="img/carimbo-navy.png?v=5" alt="">
+    <div class="c-reg">
+      <div class="c-marca" style="top:26mm"><u></u><i>10</i></div>
+      <div class="c-marca" style="top:60mm"><u></u><i>08</i></div>
+      <div class="c-marca" style="top:94mm"><u></u><i>06</i></div>
+      <div class="c-marca forte" style="top:128mm"><u></u><i>04</i></div>
+      <div class="c-marca" style="top:162mm"><u></u><i>02</i></div>
+      <div class="c-marca" style="top:196mm"><u></u><i>00</i></div>
+    </div>
+    <div class="c-conteudo">
+      <div style="display:flex;align-items:center;gap:7mm">
+        <img src="img/logo.png?v=5" alt="" style="width:23mm;height:23mm;object-fit:contain">
+        <div class="marca">BLUE OCEAN<span>DIVING</span></div>
+      </div>
+      <div class="carta">
+        <div class="dt">Salvador de Bahia &middot; 3 de setembro de 2026</div>
+        <p>&Agrave;<br>Ag&ecirc;ncia Mar&iacute;tima</p>
+        <p>Prezados,</p>
+        <p>Segue o escopo de limpeza de casco e polimento de h&eacute;lice para a embarca&ccedil;&atilde;o fundeada na Ba&iacute;a de Todos os Santos, a ser executado com o navio na &aacute;gua, sem docagem.</p>
+        <p>O relat&oacute;rio fotogr&aacute;fico da opera&ccedil;&atilde;o &eacute; entregue em 3 a 4 dias &uacute;teis ap&oacute;s a conclus&atilde;o do servi&ccedil;o. Um representante do navio pode acompanhar a inspe&ccedil;&atilde;o ao vivo, a bordo da nossa embarca&ccedil;&atilde;o de apoio.</p>
+        <p>Atenciosamente,</p>
+      </div>
+    </div>
+    <div class="rod-tim">
+      <span>Blue Ocean Diving Ltda &middot; CNPJ 66.316.392/0001&#8209;00</span>
+      <span>Rua do Pilar 15 &middot; Salvador, Bahia &middot; Brasil</span>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="bloco" id="assin">
+  <div class="cab"><span class="let">03</span><h2>Assinatura de email</h2></div>
+  <p class="ideia">Duas por pessoa: a <strong>completa</strong>, pro primeiro contato com um armador, e a <strong>curta</strong>, pra resposta no meio de uma conversa que j&aacute; est&aacute; rolando. Feitas em tabela com estilo embutido, porque cliente de email ignora CSS externo.</p>
+  <p class="conf">&#9888; Os endere&ccedil;os abaixo est&atilde;o no dom&iacute;nio novo, <b>blueoceandiving.com.br</b>, no formato primeiro nome. Se voc&ecirc;s preferirem outro formato, eu troco em um minuto.</p>
+
+  <p class="pess" style="margin-top:26px"><b>Mariana Rossiter</b> &middot; General Manager</p>
+  <div class="papel"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <td style="padding:0 18px 0 0;vertical-align:top;border-right:2px solid #EAAA1F;">
+      <img src="img/logo.png?v=5" width="62" height="62" alt="Blue Ocean Diving" style="display:block;border:0;">
+    </td>
+    <td style="padding:0 0 0 18px;vertical-align:top;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;color:#0b1b2e;letter-spacing:.2px;line-height:1.2;">BLUE OCEAN DIVING</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:2.6px;color:#C28A00;text-transform:uppercase;padding-top:4px;">Underwater solutions for heavy operations</div>
+      <div style="height:12px;line-height:12px;font-size:1px;">&nbsp;</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#0b1b2e;line-height:1.3;">Mariana Rossiter</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:2px;color:#C28A00;text-transform:uppercase;padding-top:3px;">General Manager</div>
+      <div style="height:12px;line-height:12px;font-size:1px;">&nbsp;</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12.5px;color:#48606f;line-height:1.75;">
+        <a href="mailto:commercial@blueoceandiving.com.br" style="color:#0a3a63;text-decoration:none;">commercial@blueoceandiving.com.br</a><br>
+        <a href="tel:+5571991015763" style="color:#48606f;text-decoration:none;">+55 71 99101&#8209;5763</a> &nbsp;<span style="color:#8b9aa5;">&middot;&nbsp; English or Portuguese</span><br>
+        Rua do Pilar 15, Com&eacute;rcio &middot; Salvador de Bahia &middot; Brasil
+      </div>
+      <div style="height:14px;line-height:14px;font-size:1px;">&nbsp;</div>
+      <div style="border-top:1px solid #dfe5e9;padding-top:9px;font-family:'Courier New',Courier,monospace;font-size:9.5px;letter-spacing:1.4px;color:#8b9aa5;text-transform:uppercase;">
+        Port of Salvador &nbsp;&middot;&nbsp; No drydocking &nbsp;&middot;&nbsp; CNPJ 66.316.392/0001-00
+      </div>
+    </td>
+  </tr>
+</table></div>
+  <div class="papel"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <td style="padding:0 14px 0 0;vertical-align:middle;border-right:2px solid #EAAA1F;">
+      <img src="img/logo.png?v=5" width="38" height="38" alt="Blue Ocean Diving" style="display:block;border:0;">
+    </td>
+    <td style="padding:0 0 0 14px;vertical-align:middle;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:13.5px;font-weight:bold;color:#0b1b2e;line-height:1.3;">Mariana Rossiter &nbsp;<span style="font-weight:normal;color:#8b9aa5;">&middot;&nbsp; Blue Ocean Diving</span></div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#48606f;line-height:1.6;padding-top:3px;">
+        <a href="mailto:commercial@blueoceandiving.com.br" style="color:#0a3a63;text-decoration:none;">commercial@blueoceandiving.com.br</a>
+        &nbsp;&middot;&nbsp; +55 71 99101&#8209;5763
+        &nbsp;&middot;&nbsp; <span style="color:#8b9aa5;">Salvador de Bahia, Brazil</span>
+      </div>
+    </td>
+  </tr>
+</table></div>
+
+  <p class="pess" style="margin-top:26px"><b>Thiago Cruz</b> &middot; Commercial Manager <span class="selo vazio">telefone a conferir</span></p>
+  <div class="papel"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <td style="padding:0 18px 0 0;vertical-align:top;border-right:2px solid #EAAA1F;">
+      <img src="img/logo.png?v=5" width="62" height="62" alt="Blue Ocean Diving" style="display:block;border:0;">
+    </td>
+    <td style="padding:0 0 0 18px;vertical-align:top;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;color:#0b1b2e;letter-spacing:.2px;line-height:1.2;">BLUE OCEAN DIVING</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:2.6px;color:#C28A00;text-transform:uppercase;padding-top:4px;">Underwater solutions for heavy operations</div>
+      <div style="height:12px;line-height:12px;font-size:1px;">&nbsp;</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#0b1b2e;line-height:1.3;">Thiago Cruz</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:2px;color:#C28A00;text-transform:uppercase;padding-top:3px;">Commercial Manager</div>
+      <div style="height:12px;line-height:12px;font-size:1px;">&nbsp;</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12.5px;color:#48606f;line-height:1.75;">
+        <a href="mailto:thiago@blueoceandiving.com.br" style="color:#0a3a63;text-decoration:none;">thiago@blueoceandiving.com.br</a><br>
+        <a href="tel:+557199266861" style="color:#48606f;text-decoration:none;">+55 71 9926&#8209;6861</a> &nbsp;<span style="color:#8b9aa5;">&middot;&nbsp; English or Portuguese</span><br>
+        Rua do Pilar 15, Com&eacute;rcio &middot; Salvador de Bahia &middot; Brasil
+      </div>
+      <div style="height:14px;line-height:14px;font-size:1px;">&nbsp;</div>
+      <div style="border-top:1px solid #dfe5e9;padding-top:9px;font-family:'Courier New',Courier,monospace;font-size:9.5px;letter-spacing:1.4px;color:#8b9aa5;text-transform:uppercase;">
+        Port of Salvador &nbsp;&middot;&nbsp; No drydocking &nbsp;&middot;&nbsp; CNPJ 66.316.392/0001-00
+      </div>
+    </td>
+  </tr>
+</table></div>
+  <div class="papel"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <td style="padding:0 14px 0 0;vertical-align:middle;border-right:2px solid #EAAA1F;">
+      <img src="img/logo.png?v=5" width="38" height="38" alt="Blue Ocean Diving" style="display:block;border:0;">
+    </td>
+    <td style="padding:0 0 0 14px;vertical-align:middle;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:13.5px;font-weight:bold;color:#0b1b2e;line-height:1.3;">Thiago Cruz &nbsp;<span style="font-weight:normal;color:#8b9aa5;">&middot;&nbsp; Blue Ocean Diving</span></div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#48606f;line-height:1.6;padding-top:3px;">
+        <a href="mailto:thiago@blueoceandiving.com.br" style="color:#0a3a63;text-decoration:none;">thiago@blueoceandiving.com.br</a>
+        &nbsp;&middot;&nbsp; +55 71 9926&#8209;6861
+        &nbsp;&middot;&nbsp; <span style="color:#8b9aa5;">Salvador de Bahia, Brazil</span>
+      </div>
+    </td>
+  </tr>
+</table></div>
+
+  <p class="pess" style="margin-top:26px"><b>Felipe Campos Neves</b> &middot; Managing Partner <span class="selo vazio">cargo a confirmar</span></p>
+  <div class="papel"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <td style="padding:0 18px 0 0;vertical-align:top;border-right:2px solid #EAAA1F;">
+      <img src="img/logo.png?v=5" width="62" height="62" alt="Blue Ocean Diving" style="display:block;border:0;">
+    </td>
+    <td style="padding:0 0 0 18px;vertical-align:top;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;color:#0b1b2e;letter-spacing:.2px;line-height:1.2;">BLUE OCEAN DIVING</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:2.6px;color:#C28A00;text-transform:uppercase;padding-top:4px;">Underwater solutions for heavy operations</div>
+      <div style="height:12px;line-height:12px;font-size:1px;">&nbsp;</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#0b1b2e;line-height:1.3;">Felipe Campos Neves</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:2px;color:#C28A00;text-transform:uppercase;padding-top:3px;">Managing Partner</div>
+      <div style="height:12px;line-height:12px;font-size:1px;">&nbsp;</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12.5px;color:#48606f;line-height:1.75;">
+        <a href="mailto:felipe@blueoceandiving.com.br" style="color:#0a3a63;text-decoration:none;">felipe@blueoceandiving.com.br</a><br>
+        <a href="tel:+5571996822101" style="color:#48606f;text-decoration:none;">+55 71 99682&#8209;2101</a> &nbsp;<span style="color:#8b9aa5;">&middot;&nbsp; English or Portuguese</span><br>
+        Rua do Pilar 15, Com&eacute;rcio &middot; Salvador de Bahia &middot; Brasil
+      </div>
+      <div style="height:14px;line-height:14px;font-size:1px;">&nbsp;</div>
+      <div style="border-top:1px solid #dfe5e9;padding-top:9px;font-family:'Courier New',Courier,monospace;font-size:9.5px;letter-spacing:1.4px;color:#8b9aa5;text-transform:uppercase;">
+        Port of Salvador &nbsp;&middot;&nbsp; No drydocking &nbsp;&middot;&nbsp; CNPJ 66.316.392/0001-00
+      </div>
+    </td>
+  </tr>
+</table></div>
+  <div class="papel"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <td style="padding:0 14px 0 0;vertical-align:middle;border-right:2px solid #EAAA1F;">
+      <img src="img/logo.png?v=5" width="38" height="38" alt="Blue Ocean Diving" style="display:block;border:0;">
+    </td>
+    <td style="padding:0 0 0 14px;vertical-align:middle;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:13.5px;font-weight:bold;color:#0b1b2e;line-height:1.3;">Felipe Campos Neves &nbsp;<span style="font-weight:normal;color:#8b9aa5;">&middot;&nbsp; Blue Ocean Diving</span></div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#48606f;line-height:1.6;padding-top:3px;">
+        <a href="mailto:felipe@blueoceandiving.com.br" style="color:#0a3a63;text-decoration:none;">felipe@blueoceandiving.com.br</a>
+        &nbsp;&middot;&nbsp; +55 71 99682&#8209;2101
+        &nbsp;&middot;&nbsp; <span style="color:#8b9aa5;">Salvador de Bahia, Brazil</span>
+      </div>
+    </td>
+  </tr>
+</table></div>
+
+  <p class="como">&#8627; Gmail: Configura&ccedil;&otilde;es, Ver todas as configura&ccedil;&otilde;es, Assinatura, Criar. Abrir esta p&aacute;gina, selecionar a assinatura com o mouse, copiar e colar na caixa. Colar como texto formatado, n&atilde;o como c&oacute;digo. No Outlook: Arquivo, Op&ccedil;&otilde;es, Email, Assinaturas.</p>
+</div>
+
+</body>
+</html>
